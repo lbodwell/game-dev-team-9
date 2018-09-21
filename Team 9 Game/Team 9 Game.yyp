@@ -143,6 +143,14 @@
             }
         },
         {
+            "Key": "87e591a0-84d5-49ce-bf4a-8b3122520c50",
+            "Value": {
+                "id": "48c6db34-c516-4780-a55a-37312e2e10bf",
+                "resourcePath": "objects\\potato\\potato.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "92d298af-f4e4-4e65-8123-bd9c2218c197",
             "Value": {
                 "id": "b820e297-862c-47be-acbb-fc8c60f10538",
