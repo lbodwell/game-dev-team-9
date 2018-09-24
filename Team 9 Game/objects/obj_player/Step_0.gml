@@ -34,7 +34,8 @@ if ((y > room_height + 32) || (player_health == 0)) {
 }
 
 if (!player_alive) {
-	//reset scene
+	room_restart();
+	show_debug_message("Player died");
 }
 
 x += hspd;
