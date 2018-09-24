@@ -1,5 +1,5 @@
-x = room_width / 2;
-y = room_height - 192;
+x = 448;
+y = room_height - 160;
 
 hspd = 0;
 vspd = 0;

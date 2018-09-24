@@ -16,29 +16,31 @@ if (!game_paused) {
 	if (place_meeting(x, y + 1, obj_wall) && key_jump) {
 		vspd -= 7;
 	}
-
 	if (place_meeting(x + hspd, y, obj_wall)) {
 		while (!place_meeting(x + sign(hspd), y, obj_wall)) {
 			x += sign(hspd);
 		}
 		hspd = 0;
 	}
-
 	if (place_meeting(x, y + vspd, obj_wall)) {
 		while (!place_meeting(x, y + sign(vspd), obj_wall)) {
 			y += sign(vspd);
 		}
 		vspd = 0;
 	}
-
+	
+	if (x < 0) {
+		x = 0;
+	}
+	if (y < 0) {
+		y = 0;
+	}
 	if (player_health < 0) {
 		player_health = 0;
 	}
-
 	if ((y > room_height + 32) || (player_health == 0)) {
 		player_alive = false;
 	}
-
 	if (!player_alive) {
 		room_restart();
 		show_debug_message("Player died");
