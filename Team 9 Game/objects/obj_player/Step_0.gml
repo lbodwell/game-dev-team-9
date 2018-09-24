@@ -30,11 +30,11 @@ if (!game_paused) {
 		vspd = 0;
 	}
 	
-	if (x < 8) {
-		x = 8;
+	if (x < 12) {
+		x = 12;
 	}
-	if (y < 8) {
-		y = 8;
+	if (y < 12) {
+		y = 12;
 	}
 	if (player_health < 0) {
 		player_health = 0;
