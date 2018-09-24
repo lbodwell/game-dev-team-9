@@ -13,7 +13,8 @@ if (key_pause) {
 }
 
 if (!game_paused) {
-	if (place_meeting(x, y + 1, obj_wall) && key_jump) {
+	player_on_floor = place_meeting(x, y + 1, obj_wall)
+	if (player_on_floor && key_jump) {
 		vspd -= 7;
 	}
 	if (place_meeting(x + hspd, y, obj_wall)) {
@@ -29,11 +30,11 @@ if (!game_paused) {
 		vspd = 0;
 	}
 	
-	if (x < 0) {
-		x = 0;
+	if (x < 8) {
+		x = 8;
 	}
-	if (y < 0) {
-		y = 0;
+	if (y < 8) {
+		y = 8;
 	}
 	if (player_health < 0) {
 		player_health = 0;
@@ -45,10 +46,32 @@ if (!game_paused) {
 		room_restart();
 		show_debug_message("Player died");
 	}
-
+	
 	x += hspd;
 	y += vspd;
+	
+	if (!player_on_floor) {
+		sprite_index = spr_player_jump;
+		image_speed = 0;
+		if (sign(vspd) == 1) {
+			image_index = 1;
+		} else {
+			image_index = 0;
+		}
+	} else {
+		if (hspd != 0) {
+			sprite_index = spr_player_run;
+			image_speed = 1;
+			image_xscale = sign(hspd) * 1.33;
+		} else {
+			sprite_index = spr_player_neutral;
+		}
+	}
+	
 } else {
-	//TODO: add pause menu
+	//TODO: fix pause menu
+	draw_set_color(c_black);
+	draw_set_font(fnt_pause);
+	draw_text(room_width / 2, room_width / 4, "Paused");
 	show_debug_message("Game paused");
 }
