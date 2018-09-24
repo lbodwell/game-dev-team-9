@@ -8,3 +8,5 @@ spd = 4;
 
 player_alive = true;
 player_health = 100;
+
+game_paused = false;
