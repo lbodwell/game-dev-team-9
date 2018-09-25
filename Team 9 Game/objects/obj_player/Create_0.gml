@@ -14,4 +14,4 @@ player_alive = true;
 player_health = 100;
 player_energy = 0;
 player_charge_rate = 1;
-player_infinite_energy = false
+player_infinite_energy = false;
