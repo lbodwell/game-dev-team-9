@@ -33,26 +33,24 @@ if (y < 12) {
 	y = 12;
 }
 
-// Player animation
-
-	
-	if (!player_on_floor) {
-		sprite_index = spr_player_jump;
-		image_speed = 0;
-		if (sign(vspd) == 1) {
-			image_index = 1;
-		} else {
-			image_index = 0;
-		}
+// Player animation	
+if (!player_on_floor) {
+	sprite_index = spr_player_jump;
+	image_speed = 0;
+	if (sign(vspd) == 1) {
+		image_index = 1;
 	} else {
-		if (hspd != 0) {
-			image_xscale = sign(hspd) * 1.33;
-			sprite_index = spr_player_run;
-			image_speed = 1;
-		} else {
-			sprite_index = spr_player_neutral;
-		}
+		image_index = 0;
 	}
+} else {
+	if (hspd != 0) {
+		image_xscale = sign(hspd) * 1.33;
+		sprite_index = spr_player_run;
+		image_speed = 1;
+	} else {
+		sprite_index = spr_player_neutral;
+	}
+}
 
 // Player status
 if (player_energy > 100) {
