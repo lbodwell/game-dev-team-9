@@ -34,7 +34,7 @@
             "Key": "06bbb9f5-a567-4110-8db9-ce2be544df57",
             "Value": {
                 "id": "ebbf5260-f2b0-4f4e-bbed-5d90cc2ce3c1",
-                "resourcePath": "sprites\\spr_player\\spr_player.yy",
+                "resourcePath": "sprites\\spr_player_neutral\\spr_player_neutral.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -135,6 +135,14 @@
             }
         },
         {
+            "Key": "553626b8-73b7-4435-bf5a-bd95bd51a011",
+            "Value": {
+                "id": "034c41d6-8850-4b8b-b0da-8f6c8ef471cb",
+                "resourcePath": "objects\\obj_ui\\obj_ui.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "5c106b13-aa24-4c7d-acd4-b504b1b9cb23",
             "Value": {
                 "id": "4b174e43-5051-4d0d-a321-9fb72c844f12",
@@ -175,6 +183,22 @@
             }
         },
         {
+            "Key": "97497939-46de-4415-addf-3e443b4565eb",
+            "Value": {
+                "id": "cdc3385e-ef57-4759-9d40-0826d74ef979",
+                "resourcePath": "sprites\\spr_player_jump\\spr_player_jump.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "97c9ad34-d463-4c85-8853-102f990ae935",
+            "Value": {
+                "id": "2ea4ca5b-f35f-4d3c-9167-85e3e4365683",
+                "resourcePath": "fonts\\fnt_pause\\fnt_pause.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
             "Key": "a41754a2-cc07-4ee7-8c3a-441390d6a55c",
             "Value": {
                 "id": "9c48a397-5f82-4f0a-90e7-c0e544233086",
@@ -204,6 +228,14 @@
                 "id": "79f9b98a-c561-46bb-9b69-c3c1c62ae526",
                 "resourcePath": "options\\windows\\options_windows.yy",
                 "resourceType": "GMWindowsOptions"
+            }
+        },
+        {
+            "Key": "ccf7d160-1535-4df9-9bc5-99753aa417a9",
+            "Value": {
+                "id": "bc75a97a-0b16-4d62-8e47-c61fea88e99b",
+                "resourcePath": "sprites\\spr_player_run\\spr_player_run.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
