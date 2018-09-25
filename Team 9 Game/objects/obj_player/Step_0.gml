@@ -75,7 +75,9 @@ if (player_energy < 0) {
 	player_energy = 0;
 }
 player_energy += (0.01 * player_charge_rate);
-show_debug_message("energy: " + string(player_energy));
+if (player_charge_rate != 0) {
+	show_debug_message("energy: " + string(player_energy));
+}
 if (player_health > 100) {
 	player_health = 100;
 }
