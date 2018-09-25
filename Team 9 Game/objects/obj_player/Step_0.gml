@@ -53,26 +53,29 @@ if (!player_on_floor) {
 }
 
 // Player status
+if (!player_infinite_energy) {
+	if (hspd != 0 || vspd != 0) {
+		if (hspd != 0 && vspd != 0) {
+			player_charge_rate = 5;
+		} else if (hspd != 0 && vspd == 0) {
+		player_charge_rate = 3;
+		} else if (hspd == 0 && vspd != 0) {
+			player_charge_rate = 1;
+		}
+	} else {
+		player_charge_rate = 0;
+	}
+} else {
+	player_energy = 100;
+}
 if (player_energy > 100) {
 	player_energy = 100;
 }
 if (player_energy < 0) {
 	player_energy = 0;
 }
-
-if (!player_infinite_energy) {
-	if (hspd != 0) {
-		if (vspd != 0) {
-			player_charge_rate = 5;
-		} else {
-			player_charge_rate = 1;
-		}
-		player_energy += (0.01 * player_charge_rate);
-		show_debug_message("energy: " + string(player_energy));
-	}
-} else {
-	player_energy = 100;
-}
+player_energy += (0.01 * player_charge_rate);
+show_debug_message("energy: " + string(player_energy));
 if (player_health > 100) {
 	player_health = 100;
 }
