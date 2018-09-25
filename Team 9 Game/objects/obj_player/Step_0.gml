@@ -34,8 +34,8 @@ if (y < 12) {
 }
 
 // Player animation
-if (hspd != 0) {
-	image_xscale = sign(hspd) * 1.33;
+
+	
 	if (!player_on_floor) {
 		sprite_index = spr_player_jump;
 		image_speed = 0;
@@ -45,12 +45,14 @@ if (hspd != 0) {
 			image_index = 0;
 		}
 	} else {
-		sprite_index = spr_player_run;
-		image_speed = 1;	
+		if (hspd != 0) {
+			image_xscale = sign(hspd) * 1.33;
+			sprite_index = spr_player_run;
+			image_speed = 1;
+		} else {
+			sprite_index = spr_player_neutral;
+		}
 	}
-} else {
-	sprite_index = spr_player_neutral;
-}
 
 // Player status
 if (player_energy > 100) {
