@@ -121,7 +121,7 @@ if (key_heal && player_energy >= 50 && player_health < 100) {
 	player_energy -= 50;
 }
 if (key_dash && player_energy > 1) {
-	player_energy -= 0.5;
+	player_energy -= 0.25;
 	while (dash < 2.5) {
 		dash += 0.0001;
 	}
