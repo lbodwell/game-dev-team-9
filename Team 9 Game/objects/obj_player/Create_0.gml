@@ -1,5 +1,5 @@
 // Set initial position
-x = 448;
+x = 64;
 y = room_height - 160;
 image_xscale = 1.33;
 image_yscale = 1.33;

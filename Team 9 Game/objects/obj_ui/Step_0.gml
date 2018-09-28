@@ -10,4 +10,4 @@ if (key_pause) {
 	}
 	game_paused = !game_paused;
 }
-//TODO: make into overlay instead of separate screen (deactivate hides objects)
+// TODO: make into overlay instead of separate screen (deactivate hides objects)

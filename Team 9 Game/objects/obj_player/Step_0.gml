@@ -2,6 +2,7 @@
 key_left = keyboard_check(ord("A"));
 key_right = keyboard_check(ord("D")); 
 key_jump = keyboard_check_pressed(vk_space);
+key_super_jump = keyboard_check(vk_shift);
 
 // Player movement
 var move = key_right - key_left;
@@ -12,6 +13,12 @@ vspd += grav;
 player_on_floor = place_meeting(x, y + 1, obj_wall);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
 if (player_on_floor && key_jump) {
+	if (key_super_jump && player_energy > 20) {
+		grav = 0.075;
+		player_energy -= 20;
+	} else {
+		grav = 0.3;
+	}
 	vspd -= 7;
 }
 invincibility_frames--;
@@ -98,6 +105,8 @@ if (!player_alive) {
 	room_restart();
 	show_debug_message("Player died");
 }
+
+// Player abilities
 
 // Update position
 x += hspd;
