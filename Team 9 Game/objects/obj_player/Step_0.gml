@@ -24,6 +24,7 @@ if (player_on_floor && key_jump) {
 		grav = 0.3;
 	}
 	vspd -= 7;
+	audio_play_sound(audio_player_jump, 1, 0);
 }
 invincibility_frames--;
 if (player_touching_enemy && invincibility_frames < 0) {
@@ -120,7 +121,7 @@ if (key_heal && player_energy >= 50 && player_health < 100) {
 	player_energy -= 50;
 }
 if (key_dash && player_energy > 1) {
-	player_energy--;
+	player_energy -= 0.5;
 	while (dash < 2.5) {
 		dash += 0.0001;
 	}
@@ -129,6 +130,19 @@ if (key_dash && player_energy > 1) {
 		dash -= 0.0001;
 	}
 }
+footstep_timer--;
+if (footstep_timer < 0 && player_on_floor) {
+	if (hspd != 0) {
+		audio_sound_pitch(audio_player_footsteps, random_range(0.7, 1.3));
+		audio_play_sound(audio_player_footsteps, 1, 0);
+		if (dash == 1) {
+			footstep_timer = 18;
+		} else if (dash == 2.5) {
+			footstep_timer = 7.2;
+		}
+	}
+}
+image_speed *= dash;
 
 // Position-based events
 if (x >= 4000) {

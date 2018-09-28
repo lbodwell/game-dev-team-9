@@ -1,3 +1,4 @@
+// Controls
 key_shoot = mouse_check_button(mb_left);
 
 image_angle = point_direction(x, y, mouse_x, mouse_y);
@@ -12,6 +13,8 @@ if (key_shoot && firing_delay < 0 ) {
 		direction = other.image_angle + random_range(-2, 2);
 		image_angle = direction;
 	}
+	audio_sound_pitch(audio_weapon_fire_ar, random_range(0.95, 1.05));
+	audio_play_sound(audio_weapon_fire_ar, 1, 0);
 }
 
 x -= lengthdir_x(recoil, image_angle);
