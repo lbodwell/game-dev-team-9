@@ -6,6 +6,7 @@ key_super_jump = keyboard_check(vk_control);
 key_dash = keyboard_check(vk_shift);
 key_heal = keyboard_check_pressed(ord("F"));
 key_repulsor = mouse_check_button(mb_right);
+key_next_level = keyboard_check_pressed(vk_enter);
 
 // Player movement
 var move = key_right - key_left;
@@ -130,6 +131,12 @@ if (key_dash && player_energy > 1) {
 }
 
 // Position-based events
+if (x >= 4000) {
+	level_complete = true;
+}
+if (level_complete && key_next_level) {
+	room_goto(room_test2);
+}
 
 // Update position
 x += hspd;

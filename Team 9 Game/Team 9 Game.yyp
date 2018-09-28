@@ -234,7 +234,7 @@
             "Key": "97c9ad34-d463-4c85-8853-102f990ae935",
             "Value": {
                 "id": "2ea4ca5b-f35f-4d3c-9167-85e3e4365683",
-                "resourcePath": "fonts\\fnt_pause\\fnt_pause.yy",
+                "resourcePath": "fonts\\fnt_ui_large\\fnt_ui_large.yy",
                 "resourceType": "GMFont"
             }
         },
@@ -274,7 +274,7 @@
             "Key": "c436619c-4efa-4368-8311-4ace39814e82",
             "Value": {
                 "id": "36f6e578-320a-480c-9798-e665d1304ab6",
-                "resourcePath": "rooms\\room1_menu\\room1_menu.yy",
+                "resourcePath": "rooms\\room_menu\\room_menu.yy",
                 "resourceType": "GMRoom"
             }
         },
@@ -295,10 +295,18 @@
             }
         },
         {
+            "Key": "d8e30d51-4634-413c-ab46-2bfe8d927d48",
+            "Value": {
+                "id": "69d20e07-ea46-4921-bc99-a79b52abd195",
+                "resourcePath": "rooms\\room_test2\\room_test2.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
             "Key": "f2b54255-0788-4b41-aa5c-eccea1ed7f96",
             "Value": {
                 "id": "5dee5e38-547f-41cf-9c50-38b6f03bfd36",
-                "resourcePath": "rooms\\room_lv1\\room_lv1.yy",
+                "resourcePath": "rooms\\room_test1\\room_test1.yy",
                 "resourceType": "GMRoom"
             }
         },

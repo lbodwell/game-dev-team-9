@@ -1,5 +1,5 @@
 // Set initial position
-x = 64;
+x = 3486;
 y = room_height - 160;
 image_xscale = 1.33;
 image_yscale = 1.33;
@@ -19,3 +19,4 @@ player_on_floor = true;
 player_touching_enemy = false;
 player_alive = true;
 player_infinite_energy = false;
+level_complete = false;

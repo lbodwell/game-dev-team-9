@@ -2,7 +2,7 @@
     "id": "97c9ad34-d463-4c85-8853-102f990ae935",
     "modelName": "GMFont",
     "mvc": "1.0",
-    "name": "fnt_pause",
+    "name": "fnt_ui_large",
     "AntiAlias": 1,
     "TTFName": "",
     "bold": false,
