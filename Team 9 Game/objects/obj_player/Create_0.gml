@@ -1,12 +1,15 @@
 // Set initial position
 x = 64;
 y = room_height - 160;
-//x = 160;
-//y = 256;
+/* rocket level spawn point
+x = 160;
+y = 256;*/
+//TODO: spawn player dynamically based on level
 image_xscale = 1.33;
 image_yscale = 1.33;
 
 // Set initial variables
+current_level_index = 0;
 hspd = 0;
 vspd = 0;
 grav = 0.3;
