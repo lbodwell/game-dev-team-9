@@ -2,18 +2,21 @@
 key_left = keyboard_check(ord("A"));
 key_right = keyboard_check(ord("D")); 
 key_jump = keyboard_check_pressed(vk_space);
-key_super_jump = keyboard_check(vk_shift);
+key_super_jump = keyboard_check(vk_control);
+key_dash = keyboard_check(vk_shift);
+key_heal = keyboard_check_pressed(ord("F"));
+key_repulsor = mouse_check_button(mb_right);
 
 // Player movement
 var move = key_right - key_left;
-hspd = move * spd;
+hspd = move * spd * dash;
 vspd += grav;
 
 // Collision detection
 player_on_floor = place_meeting(x, y + 1, obj_wall);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
 if (player_on_floor && key_jump) {
-	if (key_super_jump && player_energy > 20) {
+	if (key_super_jump && player_energy >= 20) {
 		grav = 0.075;
 		player_energy -= 20;
 	} else {
@@ -71,7 +74,7 @@ if (hspd != 0) {
 
 // Player status
 if (!player_infinite_energy) {
-	if (hspd != 0 || vspd != 0) {
+	if ((hspd != 0 || vspd != 0) && dash == 1) {
 		if (hspd != 0 && vspd != 0) {
 			player_charge_rate = 5;
 		} else if (hspd != 0 && vspd == 0) {
@@ -109,6 +112,24 @@ if (!player_alive) {
 	room_restart();
 	show_debug_message("Player died");
 }
+
+// Player abilities
+if (key_heal && player_energy >= 50 && player_health < 100) {
+	player_health += 50;
+	player_energy -= 50;
+}
+if (key_dash && player_energy > 1) {
+	player_energy--;
+	while (dash < 2.5) {
+		dash += 0.0001;
+	}
+} else {
+	while (dash > 1) {
+		dash -= 0.0001;
+	}
+}
+
+// Position-based events
 
 // Update position
 x += hspd;
