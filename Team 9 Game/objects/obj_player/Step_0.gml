@@ -14,12 +14,12 @@ hspd = move * spd * dash;
 vspd += grav;
 
 // Collision detection
-player_on_floor = place_meeting(x, y + 1, obj_wall);
+player_on_ground = place_meeting(x, y + 1, obj_wall);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
-if (player_on_floor && key_jump) {
-	if (key_super_jump && player_energy >= 20) {
+if (player_on_ground && key_jump) {
+	if (key_super_jump && player_energy >= 25) {
 		grav = 0.075;
-		player_energy -= 20;
+		player_energy -= 25;
 	} else {
 		grav = 0.3;
 	}
@@ -28,7 +28,7 @@ if (player_on_floor && key_jump) {
 }
 invincibility_frames--;
 if (player_touching_enemy && invincibility_frames < 0) {
-	player_health -= 10;
+	player_health -= 20;
 	invincibility_frames = 40;
 }
 if (place_meeting(x + hspd, y, obj_wall)) {
@@ -54,7 +54,7 @@ if (y < 16) {
 }
 
 // Player animation	
-if (!player_on_floor) {
+if (!player_on_ground) {
 	sprite_index = spr_player_jump;
 	image_speed = 0;
 	if (sign(vspd) == 1) {
@@ -75,18 +75,24 @@ if (hspd != 0) {
 }
 
 // Player status
+if (player_health >= 100) {
+	full_health_multiplier = 1.25;
+} else {
+	full_health_multiplier = 1;
+}
 if (!player_infinite_energy) {
-	if ((hspd != 0 || vspd != 0) && dash == 1) {
+	if ((hspd != 0 || vspd != 0) && dash == 1 && grav == 0.3) {
 		if (hspd != 0 && vspd != 0) {
 			player_charge_rate = 5;
 		} else if (hspd != 0 && vspd == 0) {
 		player_charge_rate = 3;
 		} else if (hspd == 0 && vspd != 0) {
-			player_charge_rate = 1;
+			player_charge_rate = 2;
 		}
 	} else {
 		player_charge_rate = 0;
 	}
+	player_charge_rate *= full_health_multiplier;
 } else {
 	player_energy = 100;
 }
@@ -116,13 +122,15 @@ if (!player_alive) {
 }
 
 // Player abilities
-if (key_heal && player_energy >= 50 && player_health < 100) {
+if (key_heal && player_energy >= 75 && player_health < 100) {
 	player_health += 50;
-	player_energy -= 50;
+	player_energy -= 75;
 }
-if (key_dash && player_energy > 1) {
+allow_dash = (player_energy > 1 && hspd != 0 && player_on_ground);
+player_dashing = (dash > 1);
+if (key_dash && (allow_dash || player_dashing)) {
 	player_energy -= 0.25;
-	while (dash < 2.5) {
+	while (dash < 2) {
 		dash += 0.0001;
 	}
 } else {
@@ -131,15 +139,11 @@ if (key_dash && player_energy > 1) {
 	}
 }
 footstep_timer--;
-if (footstep_timer < 0 && player_on_floor) {
+if (footstep_timer < 0 && player_on_ground) {
 	if (hspd != 0) {
+		footstep_timer = 18 / dash;
 		audio_sound_pitch(audio_player_footsteps, random_range(0.7, 1.3));
 		audio_play_sound(audio_player_footsteps, 1, 0);
-		if (dash == 1) {
-			footstep_timer = 18;
-		} else if (dash == 2.5) {
-			footstep_timer = 7.2;
-		}
 	}
 }
 image_speed *= dash;

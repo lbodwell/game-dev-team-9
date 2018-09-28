@@ -4,7 +4,7 @@ if (obj_player.player_health >= 0) {
 }
 
 // Draw energy bar
-draw_healthbar(view_xport[0] + 640, view_yport[0] + 64, (view_xport[0] + 960), view_yport[0] + 96, draw_energy, c_black, c_green, c_green, 0, true, false);
+draw_healthbar(view_xport[0] + 640, view_yport[0] + 64, (view_xport[0] + 960), view_yport[0] + 96, draw_energy, c_black, c_blue, c_blue, 0, true, false);
 
 // Draw next level promopt
 if (obj_player.level_complete) {
