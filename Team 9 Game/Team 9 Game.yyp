@@ -301,6 +301,14 @@
                 "resourcePath": "options\\mac\\options_mac.yy",
                 "resourceType": "GMMacOptions"
             }
+        },
+        {
+            "Key": "fe3d63b5-18b2-4912-9fc2-c560c526a720",
+            "Value": {
+                "id": "061d83d8-c4a4-4a0e-9572-acf5912bc22d",
+                "resourcePath": "objects\\obj_pause\\obj_pause.yy",
+                "resourceType": "GMObject"
+            }
         }
     ],
     "script_order": [

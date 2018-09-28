@@ -1,5 +1,7 @@
-// Pause game
+// Controls
 key_pause = keyboard_check_pressed(vk_escape);
+
+// Pause game
 if (key_pause) {
 	if (!game_paused) {
 		show_debug_message("Game paused");

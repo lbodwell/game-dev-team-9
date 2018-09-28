@@ -38,11 +38,14 @@ if (place_meeting(x, y + vspd, obj_wall)) {
 	}
 	vspd = 0;
 }
-if (x < 12) {
-	x = 12;
+if (x < 16) {
+	x = 16;
 }
-if (y < 12) {
-	y = 12;
+if (x > room_width - 16) {
+	x = room_width - 16;
+}
+if (y < 16) {
+	y = 16;
 }
 
 // Player animation	
@@ -56,12 +59,14 @@ if (!player_on_floor) {
 	}
 } else {
 	if (hspd != 0) {
-		image_xscale = sign(hspd) * 1.33;
 		sprite_index = spr_player_run;
 		image_speed = 1;
 	} else {
 		sprite_index = spr_player_neutral;
 	}
+}
+if (hspd != 0) {
+	image_xscale = sign(hspd) * 1.33;
 }
 
 // Player status
@@ -96,7 +101,6 @@ if (player_health > 100) {
 if (player_health < 0) {
 	player_health = 0;
 }
-show_debug_message("health: " + string(player_health));
 if ((y > room_height + 32) || (player_health == 0)) {
 	player_alive = false;
 }
@@ -105,8 +109,6 @@ if (!player_alive) {
 	room_restart();
 	show_debug_message("Player died");
 }
-
-// Player abilities
 
 // Update position
 x += hspd;
