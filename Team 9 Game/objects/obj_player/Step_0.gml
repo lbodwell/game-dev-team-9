@@ -1,18 +1,21 @@
 // Controls
 key_left = keyboard_check(ord("A"));
 key_right = keyboard_check(ord("D")); 
-key_jump = keyboard_check_pressed(ord("W"));
-key_shoot = keyboard_check(vk_space);
+key_jump = keyboard_check_pressed(vk_space);
 
 // Player movement
 var move = key_right - key_left;
 hspd = move * spd;
 vspd += grav;
 
-//Collision detection
-player_on_floor = place_meeting(x, y + 1, obj_wall)
+// Collision detection
+player_on_floor = place_meeting(x, y + 1, obj_wall);
+player_touching_enemy = place_meeting(x, y, obj_enemy);
 if (player_on_floor && key_jump) {
 	vspd -= 7;
+}
+if (player_touching_enemy) {
+	player_health -= 5;
 }
 if (place_meeting(x + hspd, y, obj_wall)) {
 	while (!place_meeting(x + sign(hspd), y, obj_wall)) {
@@ -93,6 +96,6 @@ if (!player_alive) {
 	show_debug_message("Player died");
 }
 
-//Update position
+// Update position
 x += hspd;
 y += vspd;
