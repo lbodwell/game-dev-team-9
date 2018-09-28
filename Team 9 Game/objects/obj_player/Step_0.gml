@@ -14,8 +14,10 @@ player_touching_enemy = place_meeting(x, y, obj_enemy);
 if (player_on_floor && key_jump) {
 	vspd -= 7;
 }
-if (player_touching_enemy) {
-	player_health -= 5;
+invincibility_frames--;
+if (player_touching_enemy && invincibility_frames < 0) {
+	player_health -= 10;
+	invincibility_frames = 40;
 }
 if (place_meeting(x + hspd, y, obj_wall)) {
 	while (!place_meeting(x + sign(hspd), y, obj_wall)) {
@@ -87,6 +89,7 @@ if (player_health > 100) {
 if (player_health < 0) {
 	player_health = 0;
 }
+show_debug_message("health: " + string(player_health));
 if ((y > room_height + 32) || (player_health == 0)) {
 	player_alive = false;
 }

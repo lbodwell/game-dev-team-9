@@ -25,7 +25,7 @@ if (y < 12) {
 if (hspd != 0) {
 	image_xscale = sign(hspd);
 }
-//TODO: death animation
+// TODO: death animation
 
 // Enemy status
 if (enemy_health > 50) {
@@ -34,7 +34,7 @@ if (enemy_health > 50) {
 if (enemy_health < 0) {
 	enemy_health = 0;
 }
-if ((y > room_height + 32) || (enemy_health == 0)) {
+if ((y > room_height + 32) || (enemy_health <= 0)) {
 	enemy_alive = false;
 }
 if (!enemy_alive) {
