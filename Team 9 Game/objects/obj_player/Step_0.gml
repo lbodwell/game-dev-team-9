@@ -149,7 +149,7 @@ if (x >= 4000) {
 	level_complete = true;
 }
 if (level_complete && key_next_level) {
-	room_goto(room_test2);
+	room_goto(inside_rocket_rm);
 }
 
 // Update position
