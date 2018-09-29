@@ -1,5 +1,6 @@
 // Set initial position
-x = 64;
+//x = 64;
+x = 3500;
 y = room_height - 160;
 /* rocket level spawn point
 x = 160;
@@ -25,7 +26,7 @@ invincibility_frames = 0;
 player_on_ground = true;
 player_touching_enemy = false;
 player_alive = true;
-player_infinite_energy = false;
+player_infinite_energy = true;
 full_health_multipler = 1;
 level_complete = false;
 footstep_timer = 0;

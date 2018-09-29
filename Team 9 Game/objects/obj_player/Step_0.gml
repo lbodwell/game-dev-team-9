@@ -132,7 +132,7 @@ if (key_heal && player_energy >= 30 && player_health < 100) {
 	player_energy -= 30;
 }
 allow_dash = (player_energy > 1 && hspd != 0 && player_on_ground);
-player_dashing = (dash > 1);
+player_dashing = dash > 1 && player_energy > 1;
 if (key_dash && (allow_dash || player_dashing)) {
 	player_energy -= 0.1;
 	while (dash < 2) {
