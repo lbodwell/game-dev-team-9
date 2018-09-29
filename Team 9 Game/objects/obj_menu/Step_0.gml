@@ -3,7 +3,7 @@ key_up = keyboard_check_pressed(ord("W"));
 key_down = keyboard_check_pressed(ord("S"));
 key_back = keyboard_check_pressed(vk_escape);
 key_next = keyboard_check_pressed(vk_enter);
-mouse_click = mouse_check_button(mb_left);
+mouse_click = mouse_check_button_pressed(mb_left);
 
 // Handle menu navigation
 if (button_index < 0) {
@@ -19,14 +19,15 @@ if (menu_index > 3) {
 	menu_index = 3;
 }
 if (key_up) {
+	audio_play_sound(audio_ui_navigate, 1, 0);
 	if (button_index == 0) {
 		button_index = 2;
-		
 	} else {
 		button_index--;
 	}
 }
 if (key_down) {
+	audio_play_sound(audio_ui_navigate, 1, 0);
 	if (button_index == 2) {
 		button_index = 0;
 	} else {
@@ -90,10 +91,21 @@ if (key_back) {
 		}
 	}
 }
+
+// Handle mouse input
 if (mouse_x > 440 && mouse_x < 584 && mouse_y > 320 && mouse_y < 400) {
+	if (button_index != 0) {
+		audio_play_sound(audio_ui_navigate, 1, 0);
+	}
 	button_index = 0;
 } else if (mouse_x > 384 && mouse_x < 640 && mouse_y > 448 && mouse_y < 528) {
+	if (button_index != 1) {
+		audio_play_sound(audio_ui_navigate, 1, 0);
+	}
 	button_index = 1;
 } else  if (mouse_x > 448 && mouse_x < 576 && mouse_y > 576 && mouse_y < 656) {
+	if (button_index != 2) {
+		audio_play_sound(audio_ui_navigate, 1, 0);
+	}
 	button_index = 2;
 }

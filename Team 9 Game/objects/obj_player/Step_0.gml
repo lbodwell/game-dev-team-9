@@ -22,6 +22,7 @@ vspd += grav;
 player_on_ground = place_meeting(x, y + 1, obj_wall);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
 if (player_on_ground && key_jump) {
+	audio_play_sound(audio_player_jump, 1, 0);
 	if (key_super_jump && player_energy >= 15) {
 		player_energy -= 15;
 		grav = 0.075;
@@ -29,7 +30,6 @@ if (player_on_ground && key_jump) {
 		grav = 0.3;
 	}
 	vspd -= 7;
-	audio_play_sound(audio_player_jump, 1, 0);
 }
 invincibility_frames--;
 if (player_touching_enemy && invincibility_frames < 0) {
@@ -81,7 +81,7 @@ if (hspd != 0) {
 
 // Player status
 if (player_health >= 100) {
-	full_health_multiplier = 1.25;
+	full_health_multiplier = 1.5;
 } else {
 	full_health_multiplier = 1;
 }
@@ -145,6 +145,7 @@ if (key_dash && (allow_dash || player_dashing)) {
 }
 
 if (key_repulsor && player_energy >= 40) {
+	audio_play_sound(audio_player_repulsor, 1, 0);
 	player_energy -= 40;
 	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
@@ -231,9 +232,9 @@ if (key_repulsor && player_energy >= 40) {
 footstep_timer--;
 if (footstep_timer < 0 && player_on_ground) {
 	if (hspd != 0) {
-		footstep_timer = 18 / dash;
 		audio_sound_pitch(audio_player_footsteps, random_range(0.7, 1.3));
 		audio_play_sound(audio_player_footsteps, 1, 0);
+		footstep_timer = 18 / dash;
 	}
 }
 image_speed *= dash;
