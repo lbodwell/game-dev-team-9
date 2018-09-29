@@ -121,6 +121,7 @@ if ((y > room_height + 32) || (player_health == 0)) {
 	player_alive = false;
 }
 if (!player_alive) {
+	audio_play_sound(audio_player_death, 1, 0);
 	instance_destroy();
 	room_restart();
 	show_debug_message("Player died");

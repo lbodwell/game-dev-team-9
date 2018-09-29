@@ -44,6 +44,7 @@ if ((y > room_height + 32) || (enemy_health <= 0)) {
 	enemy_alive = false;
 }
 if (!enemy_alive) {
+	audio_play_sound(audio_enemy_death, 1, 0);
 	instance_destroy();
 	with (obj_player) {
 		player_energy += 5;

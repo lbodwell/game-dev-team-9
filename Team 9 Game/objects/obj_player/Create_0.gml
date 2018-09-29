@@ -31,3 +31,8 @@ level_complete = false;
 footstep_timer = 0;
 developer_mode = false;
 show_hint = 0;
+play_music = false;
+
+if (!audio_is_playing(audio_music_1)) {
+	audio_play_sound(audio_music_1, 1, 0);
+}
