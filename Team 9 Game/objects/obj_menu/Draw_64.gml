@@ -24,7 +24,7 @@ switch (menu_index) {
 		draw_set_color(c_white);
 		draw_set_font(fnt_ui_large);
 		draw_set_halign(fa_center);
-		draw_text(512, 128, "Game Name");
+		draw_text(512, 128, "Obsidian Apocolypse");
 		draw_set_font(fnt_ui_med);
 		if (button_index == 0) {
 			draw_set_color(c_blue);

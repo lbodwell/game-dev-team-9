@@ -144,9 +144,9 @@ if (key_dash && (allow_dash || player_dashing)) {
 	}
 }
 
-if (key_repulsor && player_energy >= 40) {
+if (key_repulsor && player_energy >= 50) {
 	audio_play_sound(audio_player_repulsor, 1, 0);
-	player_energy -= 40;
+	player_energy -= 50;
 	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 0 + random_range(-3, 3);
@@ -240,11 +240,40 @@ if (footstep_timer < 0 && player_on_ground) {
 image_speed *= dash;
 
 // Position-based events
-if (x >= 5984) {
-	//level_complete = true;
+
+if (x > 0 && x < 928) {
+	// move and jupm
+	show_hint = 1;
+} else if (x > 928 && x < 1600) {
+	// shoot
+	show_hint = 2;
+} else if (x > 1600 && x < 2240) {
+	// sprint
+	show_hint = 3;
+} else if (x > 2560 && x < 2912) {
+	// super jump
+	show_hint = 4;
+} else if (x > 3712 && x < 4352) {
+	// super jump + sprint
+	show_hint = 5;
+} else if (x > 4352 && x < 4960) {
+	// heal
+	show_hint = 6;
+} else if (x > 4960 && x < 5856) {
+	// repulsor
+	show_hint = 7;
+} else if (x > 5856) {
+	// beat level
+	show_hint = 8;
+} else {
+	// none
+	show_hint = 0;
 }
+/*if (x >= 5984) {
+	level_complete = true;
+}*/
 if (level_complete && key_next_level) {
-	room_goto(inside_rocket_rm);
+	//room_goto(inside_rocket_rm);
 }
 
 // Update position
