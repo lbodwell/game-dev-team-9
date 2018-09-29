@@ -240,8 +240,8 @@ if (footstep_timer < 0 && player_on_ground) {
 image_speed *= dash;
 
 // Position-based events
-if (x >= 4000) {
-	level_complete = true;
+if (x >= 5984) {
+	//level_complete = true;
 }
 if (level_complete && key_next_level) {
 	room_goto(inside_rocket_rm);

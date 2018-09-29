@@ -45,6 +45,9 @@ if ((y > room_height + 32) || (enemy_health <= 0)) {
 }
 if (!enemy_alive) {
 	instance_destroy();
+	with (obj_player) {
+		player_energy += 5;
+	}
 }
 
 // Update position
