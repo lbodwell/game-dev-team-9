@@ -207,6 +207,14 @@
             }
         },
         {
+            "Key": "2272ee1f-cb4f-4358-9adc-dc57ba9077be",
+            "Value": {
+                "id": "766d81aa-7a1f-4d5c-87fd-e2c8062ad5c2",
+                "resourcePath": "sounds\\audio_player_damage\\audio_player_damage.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "2e960bb0-2267-4a8d-9161-2f6045f08b34",
             "Value": {
                 "id": "893f23ec-83cd-4e01-8f16-3535ef960034",

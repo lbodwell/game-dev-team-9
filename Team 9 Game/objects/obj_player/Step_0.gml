@@ -33,6 +33,9 @@ if (player_on_ground && key_jump) {
 }
 invincibility_frames--;
 if (player_touching_enemy && invincibility_frames < 0) {
+	if (player_health > 20) {
+		audio_play_sound(audio_player_damage, 1, 0);
+	}
 	player_health -= 20;
 	invincibility_frames = 40;
 }

@@ -1,8 +1,8 @@
 {
-    "id": "089e9200-ad4b-4327-95b5-200640884c8a",
+    "id": "2272ee1f-cb4f-4358-9adc-dc57ba9077be",
     "modelName": "GMSound",
     "mvc": "1.0",
-    "name": "audio_enemy_death",
+    "name": "audio_player_damage",
     "audioGroupGuid": "7b2c4976-1e09-44e5-8256-c527145e03bb",
     "bitDepth": 1,
     "bitRate": 128,
