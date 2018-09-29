@@ -5,8 +5,13 @@ key_jump = keyboard_check_pressed(vk_space);
 key_super_jump = keyboard_check(vk_control);
 key_dash = keyboard_check(vk_shift);
 key_heal = keyboard_check_pressed(ord("F"));
-key_repulsor = mouse_check_button(mb_right);
+key_repulsor = mouse_check_button_pressed(mb_right);
 key_next_level = keyboard_check_pressed(vk_enter);
+
+if (developer_mode) {
+	player_infinite_energy = true;
+	grav = 0.075;
+}
 
 // Player movement
 var move = key_right - key_left;
@@ -17,9 +22,9 @@ vspd += grav;
 player_on_ground = place_meeting(x, y + 1, obj_wall);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
 if (player_on_ground && key_jump) {
-	if (key_super_jump && player_energy >= 25) {
+	if (key_super_jump && player_energy >= 15) {
+		player_energy -= 15;
 		grav = 0.075;
-		player_energy -= 25;
 	} else {
 		grav = 0.3;
 	}
@@ -31,7 +36,7 @@ if (player_touching_enemy && invincibility_frames < 0) {
 	player_health -= 20;
 	invincibility_frames = 40;
 }
-if (place_meeting(x + hspd, y, obj_wall)) {
+if (place_meeting(x + hspd, y, obj_wall) && !developer_mode) {
 	while (!place_meeting(x + sign(hspd), y, obj_wall)) {
 		x += sign(hspd);
 	}
@@ -83,11 +88,11 @@ if (player_health >= 100) {
 if (!player_infinite_energy) {
 	if ((hspd != 0 || vspd != 0) && dash == 1 && grav == 0.3) {
 		if (hspd != 0 && vspd != 0) {
-			player_charge_rate = 5;
+			player_charge_rate = 3;
 		} else if (hspd != 0 && vspd == 0) {
-		player_charge_rate = 3;
+		player_charge_rate = 2;
 		} else if (hspd == 0 && vspd != 0) {
-			player_charge_rate = 2;
+			player_charge_rate = 1;
 		}
 	} else {
 		player_charge_rate = 0;
@@ -122,14 +127,14 @@ if (!player_alive) {
 }
 
 // Player abilities
-if (key_heal && player_energy >= 75 && player_health < 100) {
+if (key_heal && player_energy >= 30 && player_health < 100) {
 	player_health += 50;
-	player_energy -= 75;
+	player_energy -= 30;
 }
 allow_dash = (player_energy > 1 && hspd != 0 && player_on_ground);
 player_dashing = (dash > 1);
 if (key_dash && (allow_dash || player_dashing)) {
-	player_energy -= 0.25;
+	player_energy -= 0.1;
 	while (dash < 2) {
 		dash += 0.0001;
 	}
@@ -138,6 +143,91 @@ if (key_dash && (allow_dash || player_dashing)) {
 		dash -= 0.0001;
 	}
 }
+
+if (key_repulsor && player_energy >= 40) {
+	player_energy -= 40;
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 0 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 22.5 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 45 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 67.5 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 90 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 112.5 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 135 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 157.5 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 180 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 202.5 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 225 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 247.5 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 270 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 292.5 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 315 + random_range(-3, 3);
+		image_angle = direction;
+	}
+	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+		speed = 15 + random_range (-2, 2);
+		direction = 337.5 + random_range(-3, 3);
+		image_angle = direction;
+	}
+}
+
 footstep_timer--;
 if (footstep_timer < 0 && player_on_ground) {
 	if (hspd != 0) {

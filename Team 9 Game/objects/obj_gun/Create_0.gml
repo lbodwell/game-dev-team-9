@@ -1,2 +1,2 @@
-firing_delay = 0;
+firing_delay = 20;
 recoil = 0;

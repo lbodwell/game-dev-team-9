@@ -29,3 +29,4 @@ player_infinite_energy = false;
 full_health_multipler = 1;
 level_complete = false;
 footstep_timer = 0;
+developer_mode = false;
