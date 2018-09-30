@@ -5,6 +5,30 @@ key_back = keyboard_check_pressed(vk_escape);
 key_next = keyboard_check_pressed(vk_enter);
 mouse_click = mouse_check_button_pressed(mb_left);
 
+// Handle mouse input
+mouse_on_button1 = mouse_x > 440 && mouse_x < 584 && mouse_y > 320 && mouse_y < 400;
+mouse_on_button2 = mouse_x > 384 && mouse_x < 640 && mouse_y > 448 && mouse_y < 528;
+mouse_on_button3 = mouse_x > 448 && mouse_x < 576 && mouse_y > 576 && mouse_y < 656;
+if (mouse_on_button1) {
+	if (button_index != 0) {
+		audio_sound_pitch(audio_ui_navigate, 2);
+		audio_play_sound(audio_ui_navigate, 1, 0);
+	}
+	button_index = 0;
+} else if (mouse_on_button2) {
+	if (button_index != 1) {
+		audio_sound_pitch(audio_ui_navigate, 2);
+		audio_play_sound(audio_ui_navigate, 1, 0);
+	}
+	button_index = 1;
+} else  if (mouse_on_button3) {
+	if (button_index != 2) {
+		audio_sound_pitch(audio_ui_navigate, 2);
+		audio_play_sound(audio_ui_navigate, 1, 0);
+	}
+	button_index = 2;
+}
+
 // Handle menu navigation
 if (button_index < 0) {
 	button_index = 0;
@@ -36,7 +60,7 @@ if (key_down) {
 		button_index++;
 	}
 }
-if (key_next || mouse_click) {
+if (key_next || (mouse_click && (mouse_on_button1 || mouse_on_button2 || mouse_on_button3))) {
 	audio_sound_pitch(audio_ui_navigate, 1);
 	audio_play_sound(audio_ui_navigate, 1, 0);
 	switch (menu_index) {
@@ -96,25 +120,4 @@ if (key_back) {
 			menu_index = 0;
 		}
 	}
-}
-
-// Handle mouse input
-if (mouse_x > 440 && mouse_x < 584 && mouse_y > 320 && mouse_y < 400) {
-	if (button_index != 0) {
-		audio_sound_pitch(audio_ui_navigate, 2);
-		audio_play_sound(audio_ui_navigate, 1, 0);
-	}
-	button_index = 0;
-} else if (mouse_x > 384 && mouse_x < 640 && mouse_y > 448 && mouse_y < 528) {
-	if (button_index != 1) {
-		audio_sound_pitch(audio_ui_navigate, 2);
-		audio_play_sound(audio_ui_navigate, 1, 0);
-	}
-	button_index = 1;
-} else  if (mouse_x > 448 && mouse_x < 576 && mouse_y > 576 && mouse_y < 656) {
-	if (button_index != 2) {
-		audio_sound_pitch(audio_ui_navigate, 2);
-		audio_play_sound(audio_ui_navigate, 1, 0);
-	}
-	button_index = 2;
 }

@@ -1,9 +1,10 @@
 // Set initial position
+// test level spawn point
 x = 64;
 y = room_height - 160;
-/* rocket level spawn point
-x = 160;
-y = 256;*/
+// rocket level spawn point
+//x = 160;
+//y = 256;
 //TODO: spawn player dynamically based on level
 image_xscale = 1.33;
 image_yscale = 1.33;
@@ -31,8 +32,14 @@ level_complete = false;
 footstep_timer = 0;
 developer_mode = false;
 show_hint = 0;
-play_music = false;
+music_on = true;
 
-if (!audio_is_playing(audio_music_1)) {
-	audio_play_sound(audio_music_1, 1, 0);
+// Play music
+switch (room_get_name(room)) {
+	case "room_test1": {
+		show_debug_message("made it here");
+		if (music_on && !audio_is_playing(audio_music_1)) {
+			audio_play_sound(audio_music_1, 1, 0);
+		}
+	}
 }
