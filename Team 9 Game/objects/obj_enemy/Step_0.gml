@@ -15,7 +15,7 @@ if (agro && enemy_change_direction_delay < 0) {
 	if (abs(obj_player.x - x) > 32 && !enemy_at_turnaround) {
 		hspd = sign(obj_player.x - x);
 	}
-	enemy_change_direction_delay = 60;
+	enemy_change_direction_delay = 30;
 }
 if (place_meeting(x + hspd, y, obj_wall)) {
 	while (!place_meeting(x + sign(hspd), y, obj_wall)) {
