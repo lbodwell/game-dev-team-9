@@ -8,6 +8,7 @@ key_heal = keyboard_check_pressed(ord("F"));
 key_repulsor = mouse_check_button_pressed(mb_right);
 key_next_level = keyboard_check_pressed(vk_enter);
 
+// Developer mode
 if (developer_mode) {
 	player_infinite_energy = true;
 	grav = 0.075;
@@ -147,7 +148,6 @@ if (key_dash && (allow_dash || player_dashing)) {
 		dash -= 0.0001;
 	}
 }
-
 if (key_repulsor && player_energy >= 50) {
 	audio_play_sound(audio_player_repulsor, 1, 0);
 	player_energy -= 50;
@@ -232,7 +232,6 @@ if (key_repulsor && player_energy >= 50) {
 		image_angle = direction;
 	}
 }
-
 footstep_timer--;
 if (footstep_timer < 0 && player_on_ground) {
 	if (hspd != 0) {
@@ -269,15 +268,15 @@ if (x > 0 && x < 928) {
 } else if (x > 5856) {
 	// beat level
 	show_hint = 8;
+	level_complete = true;
 } else {
 	// none
 	show_hint = 0;
 }
-/*if (x >= 5984) {
-	level_complete = true;
-}*/
+
 if (level_complete && key_next_level) {
-	//room_goto(inside_rocket_rm);
+	audio_stop_all();
+	room_goto(room_menu);
 }
 
 // Update position

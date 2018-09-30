@@ -36,10 +36,15 @@ music_on = true;
 
 // Play music
 switch (room_get_name(room)) {
+	case "room_menu": {
+		//TODO:	title theme
+	}
+	break;
 	case "room_test1": {
-		show_debug_message("made it here");
+		//TODO: add delay
 		if (music_on && !audio_is_playing(audio_music_1)) {
 			audio_play_sound(audio_music_1, 1, 0);
 		}
 	}
+	break;
 }
