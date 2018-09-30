@@ -12,7 +12,7 @@ switch (hint_id) {
 	}
 	break;
 	case 3: {
-		hint = "Hold SHIFT while moving to dash.\nThis consumes energy so use it wisely.\nGain more energy by moving and killing enemies."
+		hint = "Hold SHIFT while moving to sprint.\nThis consumes energy so use it wisely.\nGain more energy by moving and killing enemies."
 	}
 	break;
 	case 4: {
@@ -20,7 +20,7 @@ switch (hint_id) {
 	}
 	break;
 	case 5: {
-		hint = "Maybe try combining your dash and super jump abilites..."
+		hint = "Maybe try combining your sprint and super jump abilites..."
 	}
 	break;
 	case 6: {
