@@ -3,7 +3,7 @@ key_left = keyboard_check(ord("A"));
 key_right = keyboard_check(ord("D")); 
 key_jump = keyboard_check_pressed(vk_space);
 key_super_jump = keyboard_check(vk_control);
-key_dash = keyboard_check(vk_shift);
+key_sprint = keyboard_check(vk_shift);
 key_heal = keyboard_check_pressed(ord("F"));
 key_repulsor = mouse_check_button_pressed(mb_right);
 key_next_level = keyboard_check_pressed(vk_enter);
@@ -16,7 +16,7 @@ if (developer_mode) {
 
 // Player movement
 var move = key_right - key_left;
-hspd = move * spd * dash;
+hspd = move * spd * sprint;
 vspd += grav;
 
 // Collision detection
@@ -90,7 +90,7 @@ if (player_health >= 100) {
 	full_health_multiplier = 1;
 }
 if (!player_infinite_energy) {
-	if ((hspd != 0 || vspd != 0) && dash == 1 && grav == 0.3) {
+	if ((hspd != 0 || vspd != 0) && sprint == 1 && grav == 0.3) {
 		if (hspd != 0 && vspd != 0) {
 			player_charge_rate = 3;
 		} else if (hspd != 0 && vspd == 0) {
@@ -136,16 +136,16 @@ if (key_heal && player_energy >= 30 && player_health < 100) {
 	player_health += 50;
 	player_energy -= 30;
 }
-allow_dash = (player_energy > 1 && hspd != 0 && player_on_ground);
-player_dashing = dash > 1 && player_energy > 1;
-if (key_dash && (allow_dash || player_dashing)) {
+allow_sprint = (player_energy > 1 && hspd != 0 && player_on_ground);
+player_sprinting = sprint > 1 && player_energy > 1;
+if (key_sprint && (allow_sprint || player_sprinting)) {
 	player_energy -= 0.1;
-	while (dash < 2) {
-		dash += 0.0001;
+	while (sprint < 2) {
+		sprint += 0.0001;
 	}
 } else {
-	while (dash > 1) {
-		dash -= 0.0001;
+	while (sprint > 1) {
+		sprint -= 0.0001;
 	}
 }
 if (key_repulsor && player_energy >= 50) {
@@ -237,10 +237,10 @@ if (footstep_timer < 0 && player_on_ground) {
 	if (hspd != 0) {
 		audio_sound_pitch(audio_player_footsteps, random_range(0.7, 1.3));
 		audio_play_sound(audio_player_footsteps, 1, 0);
-		footstep_timer = 18 / dash;
+		footstep_timer = 18 / sprint;
 	}
 }
-image_speed *= dash;
+image_speed *= sprint;
 
 // Position-based events
 
