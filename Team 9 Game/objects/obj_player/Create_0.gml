@@ -1,10 +1,10 @@
-// Set initial position
+ // Set initial position
 // test level spawn point
+//x = 64;
+//y = room_height - 160;
+//Planet Room
 x = 64;
-y = room_height - 160;
-// rocket level spawn point
-//x = 160;
-//y = 256;
+y = 768
 //TODO: spawn player dynamically based on level
 image_xscale = 1.33;
 image_yscale = 1.33;
