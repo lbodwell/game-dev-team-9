@@ -34,7 +34,7 @@
             "Key": "063a2f95-d380-440b-b1ed-18e459e36ecd",
             "Value": {
                 "id": "4308eb96-e243-401c-8075-eb9ea8e0aed3",
-                "resourcePath": "objects\\obj_bullet\\obj_bullet.yy",
+                "resourcePath": "objects\\obj_laser\\obj_laser.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -119,11 +119,27 @@
             }
         },
         {
+            "Key": "19e94201-c579-4cb2-a432-cc449f44d6a3",
+            "Value": {
+                "id": "849721e6-505f-4881-b016-b424f272a81b",
+                "resourcePath": "sounds\\audio_weapon_fire_laser\\audio_weapon_fire_laser.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "1b87a67e-9968-415b-b56a-77546834323d",
             "Value": {
                 "id": "4a5e57b0-e521-4cf0-a4e6-92400ae32cfc",
                 "resourcePath": "fonts\\fnt_ui_small\\fnt_ui_small.yy",
                 "resourceType": "GMFont"
+            }
+        },
+        {
+            "Key": "1d589fbe-8f85-44d7-a7c8-7f8ce3af6793",
+            "Value": {
+                "id": "b1b144c1-738b-4473-848a-bd25865cee74",
+                "resourcePath": "sprites\\spr_laser\\spr_laser.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

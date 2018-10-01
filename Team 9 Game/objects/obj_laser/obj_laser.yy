@@ -2,7 +2,7 @@
     "id": "063a2f95-d380-440b-b1ed-18e459e36ecd",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_bullet",
+    "name": "obj_laser",
     "eventList": [
         {
             "id": "e42a0e0a-b1a5-4e46-96c4-af7ae1c59712",
@@ -53,6 +53,6 @@
     "physicsStartAwake": true,
     "properties": null,
     "solid": false,
-    "spriteId": "747c5e4a-f303-4630-b94e-957071ed2156",
+    "spriteId": "1d589fbe-8f85-44d7-a7c8-7f8ce3af6793",
     "visible": true
 }
