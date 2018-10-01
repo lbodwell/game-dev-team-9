@@ -51,6 +51,18 @@ if (place_meeting(x + hspd, y, obj_wall) && !developer_mode) {
 	}
 	hspd = 0;
 }
+if (place_meeting(x + hspd, y, obj_platform) && !developer_mode) {
+	while (!place_meeting(x + sign(hspd), y, obj_platform)) {
+		x += sign(hspd);
+	}
+	hspd = 0;
+}
+if (place_meeting(x + hspd, y, obj_destructable) && !developer_mode) {
+	while (!place_meeting(x + sign(hspd), y, obj_destructable)) {
+		x += sign(hspd);
+	}
+	hspd = 0;
+}
 if (place_meeting(x, y + vspd, obj_wall)) {
 	while (!place_meeting(x, y + sign(vspd), obj_wall)) {
 		y += sign(vspd);
@@ -59,6 +71,12 @@ if (place_meeting(x, y + vspd, obj_wall)) {
 }
 if (place_meeting(x, y + vspd, obj_platform)) {
 	while (!place_meeting(x, y + sign(vspd), obj_platform)) {
+		y += sign(vspd);
+	}
+	vspd = 0;
+}
+if (place_meeting(x, y + vspd, obj_destructable)) {
+	while (!place_meeting(x, y + sign(vspd), obj_destructable)) {
 		y += sign(vspd);
 	}
 	vspd = 0;

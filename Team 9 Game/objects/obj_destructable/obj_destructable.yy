@@ -1,8 +1,8 @@
 {
-    "id": "98b8e18b-3aa0-4274-b1b3-6ca8f3c260e0",
+    "id": "dce50823-03ea-424c-90f6-63e9a7218727",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_opener",
+    "name": "obj_destructable",
     "eventList": [
         
     ],
@@ -24,6 +24,6 @@
     "physicsStartAwake": true,
     "properties": null,
     "solid": false,
-    "spriteId": "bf5d7ec8-2123-4396-8dc2-e48bf02e059c",
+    "spriteId": "31c2625d-a832-4fe2-8314-c38dd3ca551f",
     "visible": true
 }
