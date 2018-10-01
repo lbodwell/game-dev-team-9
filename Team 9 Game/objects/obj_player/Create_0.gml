@@ -24,6 +24,7 @@ player_energy = 0;
 player_charge_rate = 1;
 invincibility_frames = 0;
 player_on_ground = true;
+player_on_platform = false;
 player_touching_enemy = false;
 player_alive = true;
 player_infinite_energy = false;

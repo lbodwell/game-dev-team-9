@@ -21,8 +21,9 @@ vspd += grav;
 
 // Collision detection
 player_on_ground = place_meeting(x, y + 1, obj_wall);
+player_on_platform = place_meeting(x, y + 1, obj_platform);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
-if (player_on_ground && key_jump) {
+if ((player_on_ground || player_on_platform) && key_jump) {
 	audio_play_sound(audio_player_jump, 1, 0);
 	if (key_super_jump && player_energy >= 15) {
 		player_energy -= 15;
@@ -31,7 +32,7 @@ if (player_on_ground && key_jump) {
 		grav = 0.3;
 	}
 	vspd -= 7;
-}
+}	
 invincibility_frames--;
 if (player_touching_enemy && invincibility_frames < 0) {
 	if (player_health > 20) {
@@ -48,6 +49,12 @@ if (place_meeting(x + hspd, y, obj_wall) && !developer_mode) {
 }
 if (place_meeting(x, y + vspd, obj_wall)) {
 	while (!place_meeting(x, y + sign(vspd), obj_wall)) {
+		y += sign(vspd);
+	}
+	vspd = 0;
+}
+if (place_meeting(x, y + vspd, obj_platform)) {
+	while (!place_meeting(x, y + sign(vspd), obj_platform)) {
 		y += sign(vspd);
 	}
 	vspd = 0;
@@ -113,7 +120,7 @@ if (player_energy < 0) {
 }
 player_energy += (0.01 * player_charge_rate);
 if (player_charge_rate != 0) {
-	show_debug_message("energy: " + string(player_energy));
+	//show_debug_message("energy: " + string(player_energy));
 }
 if (player_health > 100) {
 	player_health = 100;

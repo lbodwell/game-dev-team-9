@@ -1,2 +1,9 @@
-/// @description Insert description here
-// You can write your code in this editor
+if (triggered) {
+	if (timer == 0) {
+		instance_destroy();
+	} else {
+		timer--;
+	}
+} else if (place_meeting(x, y-1, obj_player)) {
+	triggered = true;
+}
