@@ -177,9 +177,9 @@ if (key_sprint && (allow_sprint || player_sprinting)) {
 		sprint -= 0.0001;
 	}
 }
-if (key_repulsor && player_energy >= 50) {
+if (key_repulsor && player_energy >= 40) {
 	audio_play_sound(audio_player_repulsor, 1, 0);
-	player_energy -= 50;
+	player_energy -= 40;
 	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 0 + random_range(-3, 3);
@@ -273,30 +273,36 @@ image_speed *= sprint;
 
 // Position-based events
 
-if (x > 0 && x < 928) {
-	// move and jupm
+if (x > 0 && x < 1024) {
+	// move and jump
 	show_hint = 1;
-} else if (x > 928 && x < 1600) {
-	// shoot
+} else if (x > 1024 && x < 3648) {
+	// falling platforms
 	show_hint = 2;
-} else if (x > 1600 && x < 2240) {
+} else if (x > 3648 && x < 4192) {
 	// sprint
 	show_hint = 3;
-} else if (x > 2560 && x < 2912) {
-	// super jump
+} else if (x > 4192 && x < 6048) {
+	// shoot
 	show_hint = 4;
-} else if (x > 3712 && x < 4352) {
-	// super jump + sprint
+} else if (x > 6048 && x < 7776) {
+	// super jump
 	show_hint = 5;
-} else if (x > 4352 && x < 4960) {
-	// heal
+} else if (x > 7776 && x < 10208) {
+	// repulsor for enemies
 	show_hint = 6;
-} else if (x > 4960 && x < 5856) {
-	// repulsor
+} else if (x > 10208 && x < 11520) {
+	// heal
 	show_hint = 7;
-} else if (x > 5856) {
-	// beat level
+} else if (x > 11520 && x < 12448) {
+	// repulsor for objects
 	show_hint = 8;
+} else if (x > 12448 && x < 14272) {
+	// sprint and super jump
+	show_hint = 9;
+} else if (x > 14912) {
+	// beat level
+	show_hint = 10;
 	level_complete = true;
 } else {
 	// none

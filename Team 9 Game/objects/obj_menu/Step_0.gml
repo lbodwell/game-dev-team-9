@@ -67,7 +67,7 @@ if (key_next || (mouse_click && (mouse_on_button1 || mouse_on_button2 || mouse_o
 		case 0: {
 			switch (button_index) {
 				case 0: {
-					room_goto(room_test1);
+					room_goto(planet_rm);
 				}
 				break;
 				case 1: {
