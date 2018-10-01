@@ -47,6 +47,7 @@ if (y < 12) {
 
 // Enemy animation
 if (hspd != 0) {
+	sprite_index = spr_enemy_run;
 	image_xscale = -sign(hspd);
 }
 // TODO: death animation
