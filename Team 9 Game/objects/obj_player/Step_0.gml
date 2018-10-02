@@ -92,7 +92,7 @@ if (y < 16) {
 }
 
 // Player animation	
-if (!player_on_ground) {
+if (!(player_on_ground || player_on_platform)) {
 	sprite_index = spr_player_jump;
 	image_speed = 0;
 	if (sign(vspd) == 1) {
@@ -165,7 +165,7 @@ if (key_heal && player_energy >= 30 && player_health < 100) {
 	player_health += 50;
 	player_energy -= 30;
 }
-allow_sprint = (player_energy > 1 && hspd != 0 && player_on_ground);
+allow_sprint = (player_energy > 1 && hspd != 0 && (player_on_ground || player_on_platform));
 player_sprinting = sprint > 1 && player_energy > 1;
 if (key_sprint && (allow_sprint || player_sprinting)) {
 	player_energy -= 0.1;
@@ -262,7 +262,7 @@ if (key_repulsor && player_energy >= 40) {
 	}
 }
 footstep_timer--;
-if (footstep_timer < 0 && player_on_ground) {
+if (footstep_timer < 0 && (player_on_ground || player_on_platform)) {
 	if (hspd != 0) {
 		audio_sound_pitch(audio_player_footsteps, random_range(0.7, 1.3));
 		audio_play_sound(audio_player_footsteps, 1, 0);
