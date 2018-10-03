@@ -140,7 +140,7 @@ if (player_energy > 100) {
 if (player_energy < 0) {
 	player_energy = 0;
 }
-player_energy += (0.01 * player_charge_rate);
+player_energy += (0.005 * player_charge_rate);
 if (player_charge_rate != 0) {
 	//show_debug_message("energy: " + string(player_energy));
 }
@@ -177,9 +177,9 @@ if (key_sprint && (allow_sprint || player_sprinting)) {
 		sprint -= 0.0001;
 	}
 }
-if (key_repulsor && player_energy >= 40) {
+if (key_repulsor && player_energy >= 50) {
 	audio_play_sound(audio_player_repulsor, 1, 0);
-	player_energy -= 40;
+	player_energy -= 50;
 	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 0 + random_range(-3, 3);

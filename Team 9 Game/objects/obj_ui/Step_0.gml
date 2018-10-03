@@ -1,6 +1,6 @@
 // Determine player hints
 with (obj_player) {
-	other.hint_id = show_hint
+	other.hint_id = show_hint;
 }
 switch (hint_id) {
 	case 1: {
@@ -24,7 +24,7 @@ switch (hint_id) {
 	}
 	break;
 	case 6: {
-		hint = "Use the right mouse button to activate your repulsor,\ndecimating nearby enemies and destructable objects.\nThis ability consumes 40% energy."
+		hint = "Use the right mouse button to activate your repulsor,\ndecimating nearby enemies and destructable objects.\nThis ability consumes 50% energy."
 	}
 	break;
 	case 7: {
