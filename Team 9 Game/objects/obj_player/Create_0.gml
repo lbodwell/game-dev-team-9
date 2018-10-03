@@ -3,8 +3,13 @@
 //x = 64;
 //y = room_height - 160;
 // Level 2 Spawnpoint
-x = 64;
-y = 768;
+switch (room_get_name(room)) {
+	case "room_lvl2": {
+		x = 64;
+		y = 768;
+	}
+	break;
+}
 //TODO: spawn player dynamically based on level
 image_xscale = 1.33;
 image_yscale = 1.33;
@@ -36,7 +41,7 @@ developer_mode = false;
 show_hint = 0;
 audio_on = true;
 soundfx_on = true;
-music_on = false;
+music_on = true;
 soundfx_vol = 1;
 music_vol = 1;
 global.soundfx = 0;
@@ -55,7 +60,7 @@ if (!music_on) {
 }
 audio_set_master_gain(global.soundfx, soundfx_vol);
 audio_set_master_gain(global.music, music_vol);
-//if (music_on) {
+if (music_on) {
 	switch (room_get_name(room)) {
 		case "room_menu": {
 			//TODO:	title theme
@@ -70,5 +75,5 @@ audio_set_master_gain(global.music, music_vol);
 		}
 		break;
 	}
-//}
-//TODO: fix audio system
+}
+//TODO: finish/fix audio system
