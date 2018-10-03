@@ -60,20 +60,25 @@ if (!music_on) {
 }
 audio_set_master_gain(global.soundfx, soundfx_vol);
 audio_set_master_gain(global.music, music_vol);
-if (music_on) {
-	switch (room_get_name(room)) {
-		case "room_menu": {
-			//TODO:	title theme
-		}
-		break;
-		case "room_lvl2": {
-			//global.music = audio_play_sound(audio_music_1, 1, 0);
-			//TODO: add delay
+
+
+// Set room-dependant attributes
+switch (room_get_name(room)) {
+	case "room_menu": {
+		window_set_cursor(cr_default);
+		//TODO:	title theme
+	}
+	break;
+	case "room_lvl2": {
+		window_set_cursor(cr_cross);
+		//global.music = audio_play_sound(audio_music_1, 1, 0);
+		//TODO: add delay
+		if (music_on) {
 			if (!audio_is_playing(audio_music_1)) {
 				audio_play_sound(audio_music_1, 1, 0);
 			}
 		}
-		break;
 	}
+	break;
 }
 //TODO: finish/fix audio system
