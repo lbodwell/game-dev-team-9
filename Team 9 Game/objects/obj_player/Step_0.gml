@@ -31,7 +31,7 @@ if ((player_on_ground || player_on_platform) && key_jump) {
 		grav = 0.075;
 	} else {
 		grav = 0.3;
-	}
+	} 
 	vspd -= 7;
 }	
 invincibility_frames--;
