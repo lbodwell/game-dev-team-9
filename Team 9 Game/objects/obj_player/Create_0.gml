@@ -1,10 +1,10 @@
- // Set initial position
-// test level spawn point
+// Set initial position
+// Test level spawn point
 //x = 64;
 //y = room_height - 160;
-//Planet Room
+// Level 2 Spawnpoint
 x = 64;
-y = 768
+y = 768;
 //TODO: spawn player dynamically based on level
 image_xscale = 1.33;
 image_yscale = 1.33;
@@ -34,15 +34,17 @@ level_complete = false;
 footstep_timer = 0;
 developer_mode = false;
 show_hint = 0;
-music_on = true;
+music_on = false;
 
 // Play music
+
 switch (room_get_name(room)) {
 	case "room_menu": {
 		//TODO:	title theme
 	}
 	break;
 	case "planet_rm": {
+		//global.music = audio_play_sound(audio_music_1, 1, 0);
 		//TODO: add delay
 		if (music_on && !audio_is_playing(audio_music_1)) {
 			audio_play_sound(audio_music_1, 1, 0);
