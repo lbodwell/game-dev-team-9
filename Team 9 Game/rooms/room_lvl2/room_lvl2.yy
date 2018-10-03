@@ -1,6 +1,6 @@
 
 {
-    "name": "planet_rm",
+    "name": "room_lvl2",
     "id": "b3d8a4aa-fd20-45ef-9c7f-cee5e3ac53f0",
     "creationCodeFile": "",
     "inheritCode": false,

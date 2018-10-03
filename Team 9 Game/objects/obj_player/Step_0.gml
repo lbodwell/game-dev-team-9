@@ -23,7 +23,7 @@ vspd += grav;
 player_on_ground = place_meeting(x, y + 1, obj_wall);
 player_on_platform = place_meeting(x, y + 1, obj_platform);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
-player_touching_spike = place_meeting(x, y, obj_spike);
+player_touching_spike = place_meeting(x, y + 1, obj_spike);
 if ((player_on_ground || player_on_platform) && key_jump) {
 	audio_play_sound(audio_player_jump, 1, 0);
 	if (key_super_jump && player_energy >= 15) {

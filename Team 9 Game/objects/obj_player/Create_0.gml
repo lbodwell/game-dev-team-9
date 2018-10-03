@@ -34,21 +34,41 @@ level_complete = false;
 footstep_timer = 0;
 developer_mode = false;
 show_hint = 0;
+audio_on = true;
+soundfx_on = true;
 music_on = false;
+soundfx_vol = 1;
+music_vol = 1;
+global.soundfx = 0;
+global.music = 1;
 
-// Play music
-
-switch (room_get_name(room)) {
-	case "room_menu": {
-		//TODO:	title theme
-	}
-	break;
-	case "planet_rm": {
-		//global.music = audio_play_sound(audio_music_1, 1, 0);
-		//TODO: add delay
-		if (music_on && !audio_is_playing(audio_music_1)) {
-			audio_play_sound(audio_music_1, 1, 0);
-		}
-	}
-	break;
+// Audio initialization
+if (!audio_on) {
+	soundfx_on = false;
+	music_on = false;
 }
+if (!soundfx_on) {
+	soundfx_vol = 0
+}
+if (!music_on) {
+	music_vol = 0;
+}
+audio_set_master_gain(global.soundfx, soundfx_vol);
+audio_set_master_gain(global.music, music_vol);
+//if (music_on) {
+	switch (room_get_name(room)) {
+		case "room_menu": {
+			//TODO:	title theme
+		}
+		break;
+		case "room_lvl2": {
+			//global.music = audio_play_sound(audio_music_1, 1, 0);
+			//TODO: add delay
+			if (!audio_is_playing(audio_music_1)) {
+				audio_play_sound(audio_music_1, 1, 0);
+			}
+		}
+		break;
+	}
+//}
+//TODO: fix audio system
