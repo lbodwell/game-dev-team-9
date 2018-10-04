@@ -23,7 +23,7 @@ vspd += grav;
 player_on_ground = place_meeting(x, y + 1, obj_wall);
 player_on_platform = place_meeting(x, y + 1, obj_platform);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
-player_touching_spike = place_meeting(x, y, obj_spike);
+player_touching_spike = place_meeting(x, y + 1, obj_spike);
 if ((player_on_ground || player_on_platform) && key_jump) {
 	audio_play_sound(audio_player_jump, 1, 0);
 	if (key_super_jump && player_energy >= 15) {
@@ -31,7 +31,7 @@ if ((player_on_ground || player_on_platform) && key_jump) {
 		grav = 0.075;
 	} else {
 		grav = 0.3;
-	}
+	} 
 	vspd -= 7;
 }	
 invincibility_frames--;
@@ -140,7 +140,7 @@ if (player_energy > 100) {
 if (player_energy < 0) {
 	player_energy = 0;
 }
-player_energy += (0.01 * player_charge_rate);
+player_energy += (0.005 * player_charge_rate);
 if (player_charge_rate != 0) {
 	//show_debug_message("energy: " + string(player_energy));
 }
@@ -177,9 +177,9 @@ if (key_sprint && (allow_sprint || player_sprinting)) {
 		sprint -= 0.0001;
 	}
 }
-if (key_repulsor && player_energy >= 40) {
+if (key_repulsor && player_energy >= 50) {
 	audio_play_sound(audio_player_repulsor, 1, 0);
-	player_energy -= 40;
+	player_energy -= 50;
 	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 0 + random_range(-3, 3);

@@ -1,10 +1,15 @@
- // Set initial position
-// test level spawn point
+// Set initial position
+// Test level spawn point
 //x = 64;
 //y = room_height - 160;
-//Planet Room
-x = 64;
-y = 768
+// Level 2 Spawnpoint
+switch (room_get_name(room)) {
+	case "room_lvl2": {
+		x = 64;
+		y = 768;
+	}
+	break;
+}
 //TODO: spawn player dynamically based on level
 image_xscale = 1.33;
 image_yscale = 1.33;
@@ -34,19 +39,46 @@ level_complete = false;
 footstep_timer = 0;
 developer_mode = false;
 show_hint = 0;
+audio_on = true;
+soundfx_on = true;
 music_on = true;
+soundfx_vol = 1;
+music_vol = 1;
+global.soundfx = 0;
+global.music = 1;
 
-// Play music
+// Audio initialization
+if (!audio_on) {
+	soundfx_on = false;
+	music_on = false;
+}
+if (!soundfx_on) {
+	soundfx_vol = 0
+}
+if (!music_on) {
+	music_vol = 0;
+}
+audio_set_master_gain(global.soundfx, soundfx_vol);
+audio_set_master_gain(global.music, music_vol);
+
+
+// Set room-dependant attributes
 switch (room_get_name(room)) {
 	case "room_menu": {
+		window_set_cursor(cr_default);
 		//TODO:	title theme
 	}
 	break;
-	case "planet_rm": {
+	case "room_lvl2": {
+		window_set_cursor(cr_cross);
+		//global.music = audio_play_sound(audio_music_1, 1, 0);
 		//TODO: add delay
-		if (music_on && !audio_is_playing(audio_music_1)) {
-			audio_play_sound(audio_music_1, 1, 0);
+		if (music_on) {
+			if (!audio_is_playing(audio_music_1)) {
+				audio_play_sound(audio_music_1, 1, 0);
+			}
 		}
 	}
 	break;
 }
+//TODO: finish/fix audio system
