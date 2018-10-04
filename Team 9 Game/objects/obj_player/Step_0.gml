@@ -16,15 +16,16 @@ if (developer_mode) {
 
 // Player movement
 var move = key_right - key_left;
-hspd = move * spd * sprint;
+hspd = move * spd * sprint * slow_block_multiplier;
 vspd += grav;
 
 // Collision detection
 player_on_ground = place_meeting(x, y + 1, obj_wall);
 player_on_platform = place_meeting(x, y + 1, obj_platform);
+player_on_slow_block = place_meeting(x, y + 1, obj_slow_block);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
 player_touching_spike = place_meeting(x, y + 1, obj_spike);
-if ((player_on_ground || player_on_platform) && key_jump) {
+if ((player_on_ground || player_on_platform || player_on_slow_block) && key_jump) {
 	audio_play_sound(audio_player_jump, 1, 0);
 	if (key_super_jump && player_energy >= 15) {
 		player_energy -= 15;
@@ -33,7 +34,12 @@ if ((player_on_ground || player_on_platform) && key_jump) {
 		grav = 0.3;
 	} 
 	vspd -= 7;
-}	
+}
+if (player_on_slow_block && !developer_mode) {
+	slow_block_multiplier = 0.5;
+} else {
+	slow_block_multiplier = 1;
+}
 invincibility_frames--;
 if (player_touching_enemy && invincibility_frames < 0) {
 	if (player_health > 20) {
@@ -57,8 +63,14 @@ if (place_meeting(x + hspd, y, obj_platform) && !developer_mode) {
 	}
 	hspd = 0;
 }
-if (place_meeting(x + hspd, y, obj_destructable) && !developer_mode) {
-	while (!place_meeting(x + sign(hspd), y, obj_destructable)) {
+if (place_meeting(x + hspd, y, obj_platform) && !developer_mode) {
+	while (!place_meeting(x + sign(hspd), y, obj_platform)) {
+		x += sign(hspd);
+	}
+	hspd = 0;
+}
+if (place_meeting(x + hspd, y, obj_slow_block) && !developer_mode) {
+	while (!place_meeting(x + sign(hspd), y, obj_slow_block)) {
 		x += sign(hspd);
 	}
 	hspd = 0;
@@ -71,6 +83,12 @@ if (place_meeting(x, y + vspd, obj_wall)) {
 }
 if (place_meeting(x, y + vspd, obj_platform)) {
 	while (!place_meeting(x, y + sign(vspd), obj_platform)) {
+		y += sign(vspd);
+	}
+	vspd = 0;
+}
+if (place_meeting(x, y + vspd, obj_slow_block)) {
+	while (!place_meeting(x, y + sign(vspd), obj_slow_block)) {
 		y += sign(vspd);
 	}
 	vspd = 0;
@@ -92,7 +110,7 @@ if (y < 16) {
 }
 
 // Player animation	
-if (!(player_on_ground || player_on_platform)) {
+if (!(player_on_ground || player_on_platform || player_on_slow_block)) {
 	sprite_index = spr_player_jump;
 	image_speed = 0;
 	if (sign(vspd) == 1) {
@@ -103,7 +121,7 @@ if (!(player_on_ground || player_on_platform)) {
 } else {
 	if (hspd != 0) {
 		sprite_index = spr_player_run;
-		image_speed = 1;
+		image_speed = slow_block_multiplier;
 	} else {
 		sprite_index = spr_player_neutral;
 	}
@@ -262,50 +280,54 @@ if (key_repulsor && player_energy >= 50) {
 	}
 }
 footstep_timer--;
-if (footstep_timer < 0 && (player_on_ground || player_on_platform)) {
+if (footstep_timer < 0 && (player_on_ground || player_on_platform || player_on_slow_block)) {
 	if (hspd != 0) {
-		audio_sound_pitch(audio_player_footsteps, random_range(0.7, 1.3));
+		audio_sound_pitch(audio_player_footsteps, slow_block_multiplier * random_range(0.7, 1.3));
 		audio_play_sound(audio_player_footsteps, 1, 0);
-		footstep_timer = 18 / sprint;
+		footstep_timer = 18 / sprint / slow_block_multiplier;
 	}
 }
 image_speed *= sprint;
 
 // Position-based events
-
-if (x > 0 && x < 1024) {
-	// move and jump
-	show_hint = 1;
-} else if (x > 1024 && x < 3648) {
-	// falling platforms
-	show_hint = 2;
-} else if (x > 3648 && x < 4192) {
-	// sprint
-	show_hint = 3;
-} else if (x > 4192 && x < 6048) {
-	// shoot
-	show_hint = 4;
-} else if (x > 6048 && x < 7776) {
-	// super jump
-	show_hint = 5;
-} else if (x > 7776 && x < 10208) {
-	// repulsor for enemies
-	show_hint = 6;
-} else if (x > 10208 && x < 11520) {
-	// heal
-	show_hint = 7;
-} else if (x > 11520 && x < 12448) {
-	// repulsor for objects
-	show_hint = 8;
-} else if (x > 12448 && x < 14272) {
-	// sprint and super jump
-	show_hint = 9;
-} else if (x > 14912) {
-	// beat level
-	show_hint = 10;
-	level_complete = true;
+// Move to tutorial level
+if (show_hints) {
+	if (x > 0 && x < 1024) {
+		// move and jump
+		show_hint = 1;
+	} else if (x > 1024 && x < 3648) {
+		// falling platforms
+		show_hint = 2;
+	} else if (x > 3648 && x < 4192) {
+		// sprint
+		show_hint = 3;
+	} else if (x > 4192 && x < 6048) {
+		// shoot
+		show_hint = 4;
+	} else if (x > 6048 && x < 7776) {
+		// super jump
+		show_hint = 5;
+	} else if (x > 7776 && x < 10208) {
+		// repulsor for enemies
+		show_hint = 6;
+	} else if (x > 10208 && x < 11520) {
+		// heal
+		show_hint = 7;
+	} else if (x > 11520 && x < 12448) {
+		// repulsor for objects
+		show_hint = 8;
+	} else if (x > 12448 && x < 14272) {
+		// sprint and super jump
+		show_hint = 9;
+	} else if (x > 14912) {
+		// beat level
+		show_hint = 10;
+		level_complete = true;
+	}	 else {
+		// none
+		show_hint = 0;
+	}
 } else {
-	// none
 	show_hint = 0;
 }
 

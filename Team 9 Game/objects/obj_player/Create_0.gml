@@ -24,12 +24,14 @@ sprint = 1;
 sprint_time = 1;
 allow_sprint = false;
 player_sprinting = false;
+slow_block_multiplier = 1;
 player_health = 100;
 player_energy = 0;
 player_charge_rate = 1;
 invincibility_frames = 0;
 player_on_ground = true;
 player_on_platform = false;
+player_on_slow_block = false;
 player_touching_enemy = false;
 player_touching_spike = false;
 player_alive = true;
@@ -44,6 +46,7 @@ soundfx_on = true;
 music_on = true;
 soundfx_vol = 1;
 music_vol = 1;
+show_hints = false;
 global.soundfx = 0;
 global.music = 1;
 
@@ -60,7 +63,6 @@ if (!music_on) {
 }
 audio_set_master_gain(global.soundfx, soundfx_vol);
 audio_set_master_gain(global.music, music_vol);
-
 
 // Set room-dependant attributes
 switch (room_get_name(room)) {

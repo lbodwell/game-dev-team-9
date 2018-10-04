@@ -2,7 +2,7 @@
     "id": "31c2625d-a832-4fe2-8314-c38dd3ca551f",
     "modelName": "GMSprite",
     "mvc": "1.12",
-    "name": "spr_destroyable",
+    "name": "spr_destructable",
     "For3D": false,
     "HTile": false,
     "VTile": false,

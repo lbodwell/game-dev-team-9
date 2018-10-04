@@ -178,7 +178,7 @@
             "Key": "31c2625d-a832-4fe2-8314-c38dd3ca551f",
             "Value": {
                 "id": "2d52f80c-3522-4a09-b6e3-fd88c9acbe3d",
-                "resourcePath": "sprites\\spr_destroyable\\spr_destroyable.yy",
+                "resourcePath": "sprites\\spr_destructable\\spr_destructable.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -236,6 +236,14 @@
                 "id": "cf339946-127a-4e93-8d2c-606d211564f1",
                 "resourcePath": "views\\48c00e37-0d91-411b-a05c-899da695bc8a.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "4c6ad086-9166-4d62-b188-e432bbc6ba35",
+            "Value": {
+                "id": "1e54988d-7f1c-46c4-b59b-807b43bf8bf8",
+                "resourcePath": "sprites\\spr_slow_block\\spr_slow_block.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -452,6 +460,14 @@
                 "id": "091375e3-4a4f-48a2-b4e2-59827b248aa9",
                 "resourcePath": "options\\linux\\options_linux.yy",
                 "resourceType": "GMLinuxOptions"
+            }
+        },
+        {
+            "Key": "ae4d2b24-cfaf-459a-8780-05e9c7853ee3",
+            "Value": {
+                "id": "fe2f90da-793c-4102-9781-e46a2d29e265",
+                "resourcePath": "objects\\obj_slow_block\\obj_slow_block.yy",
+                "resourceType": "GMObject"
             }
         },
         {
