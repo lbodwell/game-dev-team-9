@@ -295,11 +295,27 @@
             }
         },
         {
+            "Key": "6440e8dd-b8a6-4e5b-9850-1aa13474b709",
+            "Value": {
+                "id": "301e8049-4345-4236-8136-14a1ad971b1d",
+                "resourcePath": "sprites\\spr_tileset2\\spr_tileset2.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "71ab59a2-f955-401f-8361-7f0ade6208bf",
             "Value": {
                 "id": "a20cb541-e9ba-440c-ae7f-11a43b852513",
                 "resourcePath": "sprites\\spr_gun_old\\spr_gun_old.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "734394d7-7700-41a0-b26d-e64610be2e72",
+            "Value": {
+                "id": "44b2b50c-6ee1-4c94-996a-e1999d18d6bf",
+                "resourcePath": "tilesets\\tileset2\\tileset2.yy",
+                "resourceType": "GMTileSet"
             }
         },
         {
@@ -500,6 +516,14 @@
                 "id": "79f9b98a-c561-46bb-9b69-c3c1c62ae526",
                 "resourcePath": "options\\windows\\options_windows.yy",
                 "resourceType": "GMWindowsOptions"
+            }
+        },
+        {
+            "Key": "d0396423-5bd1-4069-b384-ff92bb2e7a80",
+            "Value": {
+                "id": "b99aa203-23fb-4e67-bb3d-9a7bff39a755",
+                "resourcePath": "sprites\\spr_tilesetone\\spr_tilesetone.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
