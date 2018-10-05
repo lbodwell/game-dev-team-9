@@ -52,6 +52,11 @@ show_hints = false;
 global.soundfx = 0;
 global.music = 1;
 
+if (global.cp_room == room) {
+	x = global.cp_x;
+	y = global.cp_y;
+}
+
 // Audio initialization
 if (!audio_on) {
 	soundfx_on = false;
