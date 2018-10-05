@@ -535,6 +535,14 @@
             }
         },
         {
+            "Key": "b7c99b68-d054-40e1-a7cd-16cf9542ce47",
+            "Value": {
+                "id": "919c7960-9a31-4220-a20b-c4e3fae91a49",
+                "resourcePath": "sprites\\spr_metalplatform\\spr_metalplatform.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "c413001d-53a2-44f2-bc6d-401b7bba0372",
             "Value": {
                 "id": "61cc81a5-2db6-4fdf-b233-c420ca9128b8",
@@ -596,6 +604,14 @@
                 "id": "7b7a31d4-52a1-46dd-8353-d003790e1162",
                 "resourcePath": "sprites\\spr_repulsor_ray\\spr_repulsor_ray.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "d1bea2e8-a58f-4a7f-8474-be6ac7734462",
+            "Value": {
+                "id": "9e1bdd76-84c0-4eb2-ae55-a3b0a859d2ee",
+                "resourcePath": "objects\\obj_metalplatform\\obj_metalplatform.yy",
+                "resourceType": "GMObject"
             }
         },
         {

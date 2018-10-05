@@ -1,2 +1,2 @@
 triggered = false;
-timer = 30; 
+timer = 30;

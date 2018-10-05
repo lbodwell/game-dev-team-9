@@ -1,4 +1,4 @@
- if (triggered) {
+  if (triggered) {
 	if (timer == 0) {
 		instance_destroy();
 	} else {
@@ -7,4 +7,4 @@
 	}
 } else if (place_meeting(x, y-1, obj_player)) {
 	triggered = true;
-} 
+}
