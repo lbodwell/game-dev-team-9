@@ -37,6 +37,8 @@ player_touching_spike = false;
 player_alive = true;
 player_infinite_energy = false;
 full_health_multipler = 1;
+player_facing = 1;
+gun_facing = 1;
 level_complete = false;
 footstep_timer = 0;
 developer_mode = false;
@@ -64,23 +66,4 @@ if (!music_on) {
 audio_set_master_gain(global.soundfx, soundfx_vol);
 audio_set_master_gain(global.music, music_vol);
 
-// Set room-dependant attributes
-switch (room_get_name(room)) {
-	case "room_menu": {
-		window_set_cursor(cr_default);
-		//TODO:	title theme
-	}
-	break;
-	case "room_lvl2": {
-		window_set_cursor(cr_cross);
-		//global.music = audio_play_sound(audio_music_1, 1, 0);
-		//TODO: add delay
-		if (music_on) {
-			if (!audio_is_playing(audio_music_1)) {
-				audio_play_sound(audio_music_1, 1, 0);
-			}
-		}
-	}
-	break;
-}
 //TODO: finish/fix audio system

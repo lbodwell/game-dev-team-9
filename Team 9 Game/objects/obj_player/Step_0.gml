@@ -75,6 +75,12 @@ if (place_meeting(x + hspd, y, obj_slow_block) && !developer_mode) {
 	}
 	hspd = 0;
 }
+if (place_meeting(x + hspd, y, obj_destructable) && !developer_mode) {
+	while (!place_meeting(x + sign(hspd), y, obj_destructable)) {
+		x += sign(hspd);
+	}
+	hspd = 0;
+}
 if (place_meeting(x, y + vspd, obj_wall)) {
 	while (!place_meeting(x, y + sign(vspd), obj_wall)) {
 		y += sign(vspd);
@@ -129,6 +135,19 @@ if (!(player_on_ground || player_on_platform || player_on_slow_block)) {
 if (hspd != 0) {
 	image_xscale = sign(hspd) * 1.33;
 }
+with (obj_gun) {
+	player_dir = sign(other.hspd);
+}
+
+// Attempt to make player face direction of gun
+/*player_facing = sign(hspd);
+if (player_facing != gun_facing) {
+	image_xscale = gun_facing * 1.33;
+} else {
+	if (hspd != 0) {
+		image_xscale = player_facing * 1.33;
+	}
+}*/
 
 // Player status
 if (player_health >= 100) {
@@ -175,6 +194,7 @@ if (!player_alive) {
 	audio_play_sound(audio_player_death, 1, 0);
 	instance_destroy();
 	room_restart();
+	x = 500;
 	show_debug_message("Player died");
 }
 
@@ -339,3 +359,17 @@ if (level_complete && key_next_level) {
 // Update position
 x += hspd;
 y += vspd;
+
+switch (room_get_name(room)) {
+	case "room_lvl2": {
+		window_set_cursor(cr_cross);
+		//global.music = audio_play_sound(audio_music_1, 1, 0);
+		//TODO: add delay
+		if (music_on) {
+			if (!audio_is_playing(audio_music_1)) {
+				audio_play_sound(audio_music_1, 1, 0);
+			}
+		}
+	}
+	break;
+}

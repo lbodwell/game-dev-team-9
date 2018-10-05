@@ -16,7 +16,7 @@ if (key_shoot && firing_delay < 0 ) {
 	audio_sound_pitch(audio_weapon_fire_ar, random_range(0.95, 1.05));
 	audio_play_sound(audio_weapon_fire_laser, 1, 0);
 }
-if (image_angle > 90 && image_angle < 270) {
+if ((image_angle > 90 && image_angle < 270) || player_dir == -1) {
 	image_yscale = -1;
 } else {
 	image_yscale = 1;

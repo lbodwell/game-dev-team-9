@@ -9,6 +9,7 @@ if (key_pause) {
 		instance_deactivate_all(true);
 	} else {
 		show_debug_message("Game resumed");
+		audio_resume_sound(audio_music_1);
 		instance_activate_all();
 	}
 	game_paused = !game_paused;
