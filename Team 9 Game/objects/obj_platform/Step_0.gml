@@ -1,4 +1,4 @@
-if (triggered) {
+ if (triggered) {
 	if (timer == 0) {
 		instance_destroy();
 	} else {
