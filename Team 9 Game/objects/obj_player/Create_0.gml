@@ -15,7 +15,7 @@ image_xscale = 1.33;
 image_yscale = 1.33;
 
 // Set initial variables
-current_level_index = 0;
+current_level = room;
 hspd = 0;
 vspd = 0;
 grav = 0.3;
