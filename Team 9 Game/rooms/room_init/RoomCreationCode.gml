@@ -1,3 +1,4 @@
+// Initialize checkpoints
 global.checkpoint = noone;
 global.cp_room = 0;
 global.cp_x = 0;
