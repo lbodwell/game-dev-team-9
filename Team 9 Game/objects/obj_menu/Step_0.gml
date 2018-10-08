@@ -67,7 +67,10 @@ if (key_next || (mouse_click && (mouse_on_button1 || mouse_on_button2 || mouse_o
 		case 0: {
 			switch (button_index) {
 				case 0: {
+					audio_stop_all();
+					//room_goto(room_lvl1);
 					room_goto(room_lvl2);
+					instance_destroy();
 				}
 				break;
 				case 1: {
@@ -120,4 +123,12 @@ if (key_back) {
 			menu_index = 0;
 		}
 	}
+}
+
+if (global.music_on && room == room_menu) {
+	if (!audio_is_playing(audio_music_menu)) {
+		audio_play_sound(audio_music_menu, 1, 0);
+	}
+} else {
+	show_debug_message("made it here");
 }

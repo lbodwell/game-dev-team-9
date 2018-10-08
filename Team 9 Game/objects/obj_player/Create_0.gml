@@ -45,7 +45,7 @@ developer_mode = false;
 show_hint = 0;
 audio_on = true;
 soundfx_on = true;
-music_on = true;
+music_on = global.music_on;
 soundfx_vol = 1;
 music_vol = 1;
 show_hints = false;
@@ -55,6 +55,20 @@ global.music = 1;
 if (global.cp_room == room) {
 	x = global.cp_x;
 	y = global.cp_y;
+}
+
+switch (room) {
+	case room_lvl1: {
+		player_infinite_energy = true
+	}
+	break;
+	case room_lvl2: {
+		player_infinite_energy = false;
+	}
+	break;
+	default: {
+		player_infinite_energy = false;
+	}
 }
 
 // Audio initialization

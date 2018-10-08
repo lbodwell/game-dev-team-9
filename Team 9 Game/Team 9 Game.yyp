@@ -319,6 +319,14 @@
             }
         },
         {
+            "Key": "6715f5eb-c211-473d-97ad-ff1478a007a0",
+            "Value": {
+                "id": "d59a38b9-e72a-4a48-ac2b-25dd83f2f70b",
+                "resourcePath": "sounds\\audio_music_menu\\audio_music_menu.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "6cb79076-3a94-4f70-8019-1eb0b37a4ea5",
             "Value": {
                 "id": "bcef2a1d-80f9-41d6-833b-563d7195114b",
@@ -658,7 +666,7 @@
             "Key": "e78d106c-d118-4e81-914d-4ee83e77a57c",
             "Value": {
                 "id": "9cd17ccb-6d2e-4ec8-8280-05b07bf422ca",
-                "resourcePath": "sounds\\audio_music_1\\audio_music_1.yy",
+                "resourcePath": "sounds\\audio_music_lvl2\\audio_music_lvl2.yy",
                 "resourceType": "GMSound"
             }
         },

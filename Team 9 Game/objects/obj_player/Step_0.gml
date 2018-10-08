@@ -21,7 +21,7 @@ vspd += grav;
 
 // Collision detection
 player_on_ground = place_meeting(x, y + 1, obj_wall);
-player_on_platform = place_meeting(x, y + 1, obj_platform);
+player_on_platform = place_meeting(x, y + 1, obj_platform) || place_meeting(x, y + 1, obj_metalplatform);
 player_on_slow_block = place_meeting(x, y + 1, obj_slow_block);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
 player_touching_spike = place_meeting(x, y + 1, obj_spike);
@@ -63,8 +63,8 @@ if (place_meeting(x + hspd, y, obj_platform) && !developer_mode) {
 	}
 	hspd = 0;
 }
-if (place_meeting(x + hspd, y, obj_platform) && !developer_mode) {
-	while (!place_meeting(x + sign(hspd), y, obj_platform)) {
+if (place_meeting(x + hspd, y, obj_metalplatform) && !developer_mode) {
+	while (!place_meeting(x + sign(hspd), y, obj_metalplatform)) {
 		x += sign(hspd);
 	}
 	hspd = 0;
@@ -89,6 +89,12 @@ if (place_meeting(x, y + vspd, obj_wall)) {
 }
 if (place_meeting(x, y + vspd, obj_platform)) {
 	while (!place_meeting(x, y + sign(vspd), obj_platform)) {
+		y += sign(vspd);
+	}
+	vspd = 0;
+}
+if (place_meeting(x, y + vspd, obj_metalplatform)) {
+	while (!place_meeting(x, y + sign(vspd), obj_metalplatform)) {
 		y += sign(vspd);
 	}
 	vspd = 0;
@@ -351,20 +357,25 @@ if (level_complete && key_next_level) {
 	room_goto(room_menu);
 }
 
-// Update position
-x += hspd;
-y += vspd;
-
+// Audio handling
 switch (room_get_name(room)) {
 	case "room_lvl2": {
 		window_set_cursor(cr_cross);
 		//global.music = audio_play_sound(audio_music_1, 1, 0);
 		//TODO: add delay
 		if (music_on) {
-			if (!audio_is_playing(audio_music_1)) {
-				audio_play_sound(audio_music_1, 1, 0);
+			if (!audio_is_playing(audio_music_lvl2)) {
+				audio_play_sound(audio_music_lvl2, 1, 0);
 			}
 		}
 	}
 	break;
 }
+if (audio_is_playing(audio_music_menu)) {
+	audio_stop_sound(audio_music_menu);
+}
+
+// Update position
+x += hspd;
+y += vspd;
+
