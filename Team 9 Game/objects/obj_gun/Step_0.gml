@@ -8,7 +8,7 @@ recoil = max (0, recoil - 1);
 if (key_shoot && firing_delay < 0 ) {
 	recoil = 3;
 	firing_delay = 6;
-	with (instance_create_layer(x + 6, y, "Bullets", obj_laser)) {
+	with (instance_create_layer(x + 6, y, "Projectiles", obj_laser)) {
 		speed = 25;
 		direction = other.image_angle + random_range(-2, 2);
 		image_angle = direction;

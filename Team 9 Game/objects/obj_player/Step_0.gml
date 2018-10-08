@@ -361,7 +361,6 @@ if (level_complete && key_next_level) {
 switch (room_get_name(room)) {
 	case "room_lvl2": {
 		window_set_cursor(cr_cross);
-		//global.music = audio_play_sound(audio_music_1, 1, 0);
 		//TODO: add delay
 		if (music_on) {
 			if (!audio_is_playing(audio_music_lvl2)) {
