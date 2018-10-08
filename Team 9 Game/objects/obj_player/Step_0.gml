@@ -7,6 +7,7 @@ key_sprint = keyboard_check(vk_shift);
 key_heal = keyboard_check_pressed(ord("F"));
 key_repulsor = mouse_check_button_pressed(mb_right);
 key_next_level = keyboard_check_pressed(vk_enter);
+window_set_cursor(cr_cross);
 
 // Developer mode
 if (developer_mode) {
@@ -354,14 +355,28 @@ if (show_hints) {
 }
 if (level_complete && key_next_level) {
 	audio_stop_all();
-	room_goto(room_menu);
+	room_goto_next();
 }
 
 // Audio handling
+
+if (audio_is_playing(audio_music_menu)) {
+	audio_stop_sound(audio_music_menu);
+}
+if (room == room_lvl2 && audio_is_playing(room_lvl1)) {
+	audio_stop_sound(audio_music_lvl1);
+}
+
 switch (room_get_name(room)) {
+	case "room_lvl1": {
+		if (music_on) {
+			if (!audio_is_playing(audio_music_lvl1)) {
+				audio_play_sound(audio_music_lvl1, 1, 0);
+			}
+		}
+	}
+	break;
 	case "room_lvl2": {
-		window_set_cursor(cr_cross);
-		//TODO: add delay
 		if (music_on) {
 			if (!audio_is_playing(audio_music_lvl2)) {
 				audio_play_sound(audio_music_lvl2, 1, 0);
@@ -370,9 +385,7 @@ switch (room_get_name(room)) {
 	}
 	break;
 }
-if (audio_is_playing(audio_music_menu)) {
-	audio_stop_sound(audio_music_menu);
-}
+
 
 // Update position
 x += hspd;
