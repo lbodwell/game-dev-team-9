@@ -23,6 +23,12 @@ if (place_meeting(x + hspd, y, obj_wall)) {
 	}
 	hspd = -hspd;
 }
+if (place_meeting(x + hspd, y, obj_door)) {
+	while (!place_meeting(x + sign(hspd), y, obj_door)) {
+		x += sign(hspd);
+	}
+	hspd = -hspd;
+}
 if (place_meeting(x + hspd, y, obj_gap)) {
 	while (!place_meeting(x + sign(hspd), y, obj_gap)) {
 		x += sign(hspd);
@@ -31,6 +37,12 @@ if (place_meeting(x + hspd, y, obj_gap)) {
 }
 if (place_meeting(x, y + vspd, obj_wall)) {
 	while (!place_meeting(x, y + sign(vspd), obj_wall)) {
+		y += sign(vspd);
+	}
+	vspd = 0;
+}
+if (place_meeting(x, y + vspd, obj_door)) {
+	while (!place_meeting(x, y + sign(vspd), obj_door)) {
 		y += sign(vspd);
 	}
 	vspd = 0;
@@ -63,6 +75,13 @@ if ((y > room_height + 32) || (enemy_health <= 0)) {
 	enemy_alive = false;
 }
 if (!enemy_alive) {
+	if (instance_exists(obj_enemy_spawner)) {
+		with (obj_enemy_spawner) {
+			if (triggered) {
+				remaining[current_wave]--;
+			}
+		}
+	}
 	audio_play_sound(audio_enemy_death, 1, 0);
 	instance_destroy();
 	with (obj_player) {

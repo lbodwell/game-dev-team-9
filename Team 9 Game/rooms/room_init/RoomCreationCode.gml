@@ -9,4 +9,3 @@ global.music_on = true;
 
 // Load menu
 room_goto_next();
-//room_goto(room_lvl2);

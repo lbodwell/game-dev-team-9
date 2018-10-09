@@ -23,10 +23,11 @@ vspd += grav;
 // Collision detection
 player_on_ground = place_meeting(x, y + 1, obj_wall);
 player_on_platform = place_meeting(x, y + 1, obj_platform);
+player_on_door = place_meeting(x, y + 1, obj_door);
 player_on_slow_block = place_meeting(x, y + 1, obj_slow_block);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
 player_touching_spike = place_meeting(x, y + 1, obj_spike);
-if ((player_on_ground || player_on_platform || player_on_slow_block) && key_jump) {
+if ((player_on_ground || player_on_platform || player_on_door || player_on_slow_block) && key_jump) {
 	audio_play_sound(audio_player_jump, 1, 0);
 	if (key_super_jump && player_energy >= 15) {
 		player_energy -= 15;
@@ -64,6 +65,12 @@ if (place_meeting(x + hspd, y, obj_platform) && !developer_mode) {
 	}
 	hspd = 0;
 }
+if (place_meeting(x + hspd, y, obj_door) && !developer_mode) {
+	while (!place_meeting(x + sign(hspd), y, obj_door)) {
+		x += sign(hspd);
+	}
+	hspd = 0;
+}
 if (place_meeting(x + hspd, y, obj_slow_block) && !developer_mode) {
 	while (!place_meeting(x + sign(hspd), y, obj_slow_block)) {
 		x += sign(hspd);
@@ -84,6 +91,12 @@ if (place_meeting(x, y + vspd, obj_wall)) {
 }
 if (place_meeting(x, y + vspd, obj_platform)) {
 	while (!place_meeting(x, y + sign(vspd), obj_platform)) {
+		y += sign(vspd);
+	}
+	vspd = 0;
+}
+if (place_meeting(x, y + vspd, obj_door)) {
+	while (!place_meeting(x, y + sign(vspd), obj_door)) {
 		y += sign(vspd);
 	}
 	vspd = 0;
@@ -111,7 +124,7 @@ if (y < 16) {
 }
 
 // Player animation	
-if (!(player_on_ground || player_on_platform || player_on_slow_block)) {
+if (!(player_on_ground || player_on_platform || player_on_door || player_on_slow_block)) {
 	sprite_index = spr_player_jump;
 	image_speed = 0;
 	if (sign(vspd) == 1) {
@@ -176,7 +189,7 @@ if ((y > room_height + 32) || (player_health == 0)) {
 	player_alive = false;
 }
 if (!player_alive) {
-	scr_player_death();
+	player_death();
 }
 
 // Player abilities
@@ -184,7 +197,7 @@ if (key_heal && player_energy >= 30 && player_health < 100) {
 	player_health += 50;
 	player_energy -= 30;
 }
-allow_sprint = (player_energy > 1 && hspd != 0 && (player_on_ground || player_on_platform));
+allow_sprint = (player_energy > 1 && hspd != 0 && (player_on_ground || player_on_platform || player_on_door));
 player_sprinting = sprint > 1 && player_energy > 1;
 if (key_sprint && (allow_sprint || player_sprinting)) {
 	player_energy -= 0.1;
@@ -199,89 +212,89 @@ if (key_sprint && (allow_sprint || player_sprinting)) {
 if (key_repulsor && player_energy >= 50) {
 	audio_play_sound(audio_player_repulsor, 1, 0);
 	player_energy -= 50;
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 0 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 22.5 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 45 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 67.5 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 90 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 112.5 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 135 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 157.5 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 180 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 202.5 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 225 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 247.5 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 270 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 292.5 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 315 + random_range(-3, 3);
 		image_angle = direction;
 	}
-	with (instance_create_layer(x, y, "Bullets", obj_repulsor_ray)) {
+	with (instance_create_layer(x, y, "Projectiles", obj_repulsor_ray)) {
 		speed = 15 + random_range (-2, 2);
 		direction = 337.5 + random_range(-3, 3);
 		image_angle = direction;
 	}
 }
 footstep_timer--;
-if (footstep_timer < 0 && (player_on_ground || player_on_platform || player_on_slow_block)) {
+if (footstep_timer < 0 && (player_on_ground || player_on_platform || player_on_door || player_on_slow_block)) {
 	if (hspd != 0) {
 		audio_sound_pitch(audio_player_footsteps, slow_block_multiplier * random_range(0.7, 1.3));
 		audio_play_sound(audio_player_footsteps, 1, 0);
@@ -341,10 +354,6 @@ if (level_complete && key_next_level) {
 if (audio_is_playing(audio_music_menu)) {
 	audio_stop_sound(audio_music_menu);
 }
-/*if (room == room_lvl2 && audio_is_playing(room_lvl1)) {
-	audio_stop_sound(audio_music_lvl1);
-}*/
-
 switch (room_get_name(room)) {
 	case "room_lvl1": {
 		if (music_on) {

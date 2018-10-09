@@ -1,20 +1,26 @@
 // Set initial position
-// Test level spawn point
-//x = 64;
-//y = room_height - 160;
-// Level 2 Spawnpoint
 switch (room_get_name(room)) {
+	case "room_lvl1": {
+		//TODO: add spawnpoint
+	}
+	break;
 	case "room_lvl2": {
 		x = 64;
 		y = 768;
+		// wave testing spawnpoint
+		//x = 20320;
+		//y = 4160;
+	}
+	break;
+	case "room_lvl4": {
+		//TODO: add spawnpoint
 	}
 	break;
 }
-//TODO: spawn player dynamically based on level
-image_xscale = 1.33;
-image_yscale = 1.33;
 
 // Set initial variables
+image_xscale = 1.33;
+image_yscale = 1.33;
 current_level = room;
 hspd = 0;
 vspd = 0;
