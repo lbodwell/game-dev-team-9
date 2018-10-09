@@ -22,7 +22,7 @@ vspd += grav;
 
 // Collision detection
 player_on_ground = place_meeting(x, y + 1, obj_wall);
-player_on_platform = place_meeting(x, y + 1, obj_platform) || place_meeting(x, y + 1, obj_metalplatform);
+player_on_platform = place_meeting(x, y + 1, obj_platform);
 player_on_slow_block = place_meeting(x, y + 1, obj_slow_block);
 player_touching_enemy = place_meeting(x, y, obj_enemy);
 player_touching_spike = place_meeting(x, y + 1, obj_spike);
@@ -64,12 +64,6 @@ if (place_meeting(x + hspd, y, obj_platform) && !developer_mode) {
 	}
 	hspd = 0;
 }
-if (place_meeting(x + hspd, y, obj_metalplatform) && !developer_mode) {
-	while (!place_meeting(x + sign(hspd), y, obj_metalplatform)) {
-		x += sign(hspd);
-	}
-	hspd = 0;
-}
 if (place_meeting(x + hspd, y, obj_slow_block) && !developer_mode) {
 	while (!place_meeting(x + sign(hspd), y, obj_slow_block)) {
 		x += sign(hspd);
@@ -90,12 +84,6 @@ if (place_meeting(x, y + vspd, obj_wall)) {
 }
 if (place_meeting(x, y + vspd, obj_platform)) {
 	while (!place_meeting(x, y + sign(vspd), obj_platform)) {
-		y += sign(vspd);
-	}
-	vspd = 0;
-}
-if (place_meeting(x, y + vspd, obj_metalplatform)) {
-	while (!place_meeting(x, y + sign(vspd), obj_metalplatform)) {
 		y += sign(vspd);
 	}
 	vspd = 0;
@@ -145,16 +133,6 @@ if (hspd != 0) {
 with (obj_gun) {
 	player_dir = sign(other.hspd);
 }
-
-// Attempt to make player face direction of gun
-/*player_facing = sign(hspd);
-if (player_facing != gun_facing) {
-	image_xscale = gun_facing * 1.33;
-} else {
-	if (hspd != 0) {
-		image_xscale = player_facing * 1.33;
-	}
-}*/
 
 // Player status
 if (player_health >= 100) {
@@ -363,9 +341,9 @@ if (level_complete && key_next_level) {
 if (audio_is_playing(audio_music_menu)) {
 	audio_stop_sound(audio_music_menu);
 }
-if (room == room_lvl2 && audio_is_playing(room_lvl1)) {
+/*if (room == room_lvl2 && audio_is_playing(room_lvl1)) {
 	audio_stop_sound(audio_music_lvl1);
-}
+}*/
 
 switch (room_get_name(room)) {
 	case "room_lvl1": {
@@ -380,6 +358,14 @@ switch (room_get_name(room)) {
 		if (music_on) {
 			if (!audio_is_playing(audio_music_lvl2)) {
 				audio_play_sound(audio_music_lvl2, 1, 0);
+			}
+		}
+	}
+	break;
+	case "room_lvl4": {
+		if (music_on) {
+			if (!audio_is_playing(audio_music_lvl4)) {
+				audio_play_sound(audio_music_lvl4, 1, 0);
 			}
 		}
 	}
