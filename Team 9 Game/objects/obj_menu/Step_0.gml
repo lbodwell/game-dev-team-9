@@ -1,4 +1,4 @@
-// Controls
+ // Controls
 key_up = keyboard_check_pressed(ord("W"));
 key_down = keyboard_check_pressed(ord("S"));
 key_back = keyboard_check_pressed(vk_escape);
@@ -68,8 +68,8 @@ if (key_next || (mouse_click && (mouse_on_button1 || mouse_on_button2 || mouse_o
 			switch (button_index) {
 				case 0: {
 					audio_stop_all();
-					//room_goto(room_lvl1);
-					room_goto(room_lvl2);
+					room_goto(room_lvl1);
+					//room_goto(room_lvl2);
 					instance_destroy();
 				}
 				break;
