@@ -167,6 +167,14 @@
             }
         },
         {
+            "Key": "22641ac3-4402-4f92-969d-4a6fbc133baf",
+            "Value": {
+                "id": "795d9636-771d-480a-a665-8803fac58631",
+                "resourcePath": "sprites\\spr_boss_attack\\spr_boss_attack.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "2272ee1f-cb4f-4358-9adc-dc57ba9077be",
             "Value": {
                 "id": "766d81aa-7a1f-4d5c-87fd-e2c8062ad5c2",
@@ -275,6 +283,14 @@
             "Value": {
                 "id": "1e54988d-7f1c-46c4-b59b-807b43bf8bf8",
                 "resourcePath": "sprites\\spr_slow_block\\spr_slow_block.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "4fd4ec81-ea02-4ea5-87f6-8ae88ffb49d0",
+            "Value": {
+                "id": "f01dd4b2-537d-4a97-ad4a-0d731d53984f",
+                "resourcePath": "sprites\\spr_boss_walk\\spr_boss_walk.yy",
                 "resourceType": "GMSprite"
             }
         },
