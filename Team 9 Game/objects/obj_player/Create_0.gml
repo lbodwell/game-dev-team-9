@@ -5,10 +5,11 @@ switch (room_get_name(room)) {
 	}
 	break;
 	case "room_lvl2": {
-		//x = 64;
-		//y = 768;
-		x = 22848;
-		y = 2816;
+		x = 64;
+		y = 768;
+		// wave testing
+		//x = 22848;
+		//y = 2816;
 	}
 	break;
 	case "room_lvl4": {

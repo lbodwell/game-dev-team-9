@@ -88,7 +88,7 @@ spawn[0, 1] = 3264;
 //top left y
 spawn[1, 0] = 23712;
 //top right x
-spawn[1, 1] = 3328;
+spawn[1, 1] = 3296;
 //top right y
 spawn[2, 0] = 22816;
 //bottom left x
