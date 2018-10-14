@@ -7,6 +7,10 @@ key_sprint = keyboard_check(vk_shift);
 key_heal = keyboard_check_pressed(ord("F"));
 key_repulsor = mouse_check_button_pressed(mb_right);
 key_next_level = keyboard_check_pressed(vk_enter);
+key_lvl1 = keyboard_check_pressed(ord("1"));
+key_lvl2_start = keyboard_check_pressed(ord("2"));
+key_lvl2_waves = keyboard_check_pressed(ord("3"));
+key_lvl4 = keyboard_check_pressed(ord("4"));
 window_set_cursor(cr_cross);
 
 // Developer mode
@@ -344,9 +348,33 @@ if (show_hints) {
 } else {
 	show_hint = 0;
 }
-if (level_complete && key_next_level) {
+/*if (level_complete && key_next_level) {
 	audio_stop_all();
 	room_goto_next();
+}*/
+if (key_lvl1) {
+	audio_stop_all();
+	room_goto(room_lvl1);
+}
+if (key_lvl2_start) {
+	audio_stop_all();
+	global.checkpoint = noone;
+	global.cp_room = room_lvl2;
+	global.cp_x = 64;
+	global.cp_y = 768;
+	room_goto(room_lvl2);
+}
+if (key_lvl2_waves) {
+	audio_stop_all();
+	global.checkpoint = inst_591C94D3;
+	global.cp_room = room_lvl2;
+	global.cp_x = 22848;
+	global.cp_y = 2816;
+	room_goto(room_lvl2);
+}
+if (key_lvl4) {
+	audio_stop_all();
+	room_goto(room_lvl4);
 }
 
 // Audio handling

@@ -287,11 +287,27 @@
             }
         },
         {
+            "Key": "4eb74eb1-cd3f-4e52-97a1-439973f2db23",
+            "Value": {
+                "id": "111b9369-bcdd-4f31-ae49-31667341da2d",
+                "resourcePath": "objects\\obj_enemy_healthbar\\obj_enemy_healthbar.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "4fd4ec81-ea02-4ea5-87f6-8ae88ffb49d0",
             "Value": {
                 "id": "f01dd4b2-537d-4a97-ad4a-0d731d53984f",
                 "resourcePath": "sprites\\spr_boss_walk\\spr_boss_walk.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "501a2e60-3e77-44dd-9285-0e7e9dc38751",
+            "Value": {
+                "id": "d759cbfc-e63d-4f24-a1ec-5b5d48512528",
+                "resourcePath": "objects\\obj_boss\\obj_boss.yy",
+                "resourceType": "GMObject"
             }
         },
         {
