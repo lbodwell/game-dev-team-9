@@ -6,3 +6,4 @@ if (global.checkpoint != -4) {
 } else {
 	room_goto(obj_player.current_level);
 }
+global.player_energy = argument0;

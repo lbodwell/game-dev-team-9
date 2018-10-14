@@ -5,11 +5,10 @@ switch (room_get_name(room)) {
 	}
 	break;
 	case "room_lvl2": {
-		x = 64;
-		y = 768;
-		// wave testing spawnpoint
-		//x = 20320;
-		//y = 4160;
+		//x = 64;
+		//y = 768;
+		x = 22848;
+		y = 2816;
 	}
 	break;
 	case "room_lvl4": {
@@ -31,8 +30,8 @@ sprint_time = 1;
 allow_sprint = false;
 player_sprinting = false;
 slow_block_multiplier = 1;
-player_health = 100;
-player_energy = 0;
+player_health = global.player_health;
+player_energy = global.player_energy;
 player_charge_rate = 1;
 invincibility_frames = 0;
 player_on_ground = true;

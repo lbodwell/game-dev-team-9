@@ -1,4 +1,4 @@
 with (other) {
-	player_health -= 10;
+	player_health -= 5;
 }
 instance_destroy();

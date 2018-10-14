@@ -3,8 +3,8 @@ agro = abs(obj_player.x - x) < 512;
 firing_delay--;
 if (agro && firing_delay < 0) {
 	firing_delay = 50;
-	with (instance_create_layer(x + 6, y, "Projectiles", obj_enemy_projectile)) {
-		speed = 25;
+	with (instance_create_layer(x, y + 32, "Projectiles", obj_enemy_projectile)) {
+		speed = 20;
 		direction = point_direction(x, y, obj_player.x, obj_player.y) + random_range(-16, 16);
 		image_angle = direction;
 	}
@@ -26,3 +26,5 @@ if (!enemy_alive) {
 		player_energy += 5;
 	}
 }
+
+image_xscale = 1.5 * -sign(obj_player.x - x);

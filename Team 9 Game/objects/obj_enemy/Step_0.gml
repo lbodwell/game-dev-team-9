@@ -2,12 +2,25 @@
 vspd += grav;
 
 // Collision detection
-if (abs(obj_player.x - x) < 160) {
-	agro = true;
-	agro_multiplier = 2;
+
+// TODO: shitty if statements to determine if in spawner zone
+
+if (is_wave_enemy) {
+	if (abs(obj_player.x - x) < 256) {
+		agro = true;
+		agro_multiplier = 2;
+	} else {
+		agro = false;
+		agro_multiplier = 1;
+	}
 } else {
-	agro = false;
-	agro_multiplier = 1;
+	if (abs(obj_player.x - x) < 512) {
+		agro = true;
+		agro_multiplier = 2;
+	} else {
+		agro = false;
+		agro_multiplier = 1;
+	}
 }
 enemy_at_turnaround = place_meeting(x + hspd, y, obj_wall) || place_meeting(x + hspd, y, obj_gap);
 enemy_change_direction_delay--;

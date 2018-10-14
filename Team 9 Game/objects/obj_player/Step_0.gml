@@ -156,11 +156,11 @@ if (player_health >= 100) {
 if (!player_infinite_energy) {
 	if ((hspd != 0 || vspd != 0) && sprint == 1 && grav == 0.3) {
 		if (hspd != 0 && vspd != 0) {
-			player_charge_rate = 3;
+			player_charge_rate = 5;
 		} else if (hspd != 0 && vspd == 0) {
-		player_charge_rate = 2;
+		player_charge_rate = 3;
 		} else if (hspd == 0 && vspd != 0) {
-			player_charge_rate = 1;
+			player_charge_rate = 1.5;
 		}
 	} else {
 		player_charge_rate = 0;
@@ -189,7 +189,7 @@ if ((y > room_height + 32) || (player_health == 0)) {
 	player_alive = false;
 }
 if (!player_alive) {
-	player_death();
+	player_death(player_energy);
 }
 
 // Player abilities
