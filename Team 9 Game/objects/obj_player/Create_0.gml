@@ -88,6 +88,7 @@ if (!soundfx_on) {
 if (!music_on) {
 	music_vol = 0;
 }
+
 audio_set_master_gain(global.soundfx, soundfx_vol);
 audio_set_master_gain(global.music, music_vol);
 

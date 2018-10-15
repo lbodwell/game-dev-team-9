@@ -391,6 +391,23 @@ if (key_infinite_energy) {
 if (audio_is_playing(audio_music_menu)) {
 	audio_stop_sound(audio_music_menu);
 }
+
+if (room == room_lvl1) {
+	audio_stop_sound(audio_music_menu);
+	audio_stop_sound(audio_music_lvl2);
+	audio_stop_sound(audio_music_lvl4);
+}
+if (room == room_lvl2) {
+	audio_stop_sound(audio_music_menu);
+	audio_stop_sound(audio_music_lvl1);
+	audio_stop_sound(audio_music_lvl4);
+}
+if (room == room_lvl4) {
+	audio_stop_sound(audio_music_menu);
+	audio_stop_sound(audio_music_lvl1);
+	audio_stop_sound(audio_music_lvl2);
+}
+
 switch (room_get_name(room)) {
 	case "room_lvl1": {
 		if (music_on) {
