@@ -42,6 +42,7 @@ player_touching_enemy = false;
 player_touching_spike = false;
 player_alive = true;
 player_infinite_energy = false;
+player_infinite_health = false;
 full_health_multipler = 1;
 boss_level_multiplier = 1;
 player_facing = 1;
@@ -56,6 +57,7 @@ music_on = global.music_on;
 soundfx_vol = 1;
 music_vol = 1;
 show_hints = false;
+cheats = true;
 global.soundfx = 0;
 global.music = 1;
 

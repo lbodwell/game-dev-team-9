@@ -8,7 +8,7 @@ switch (hint_id) {
 	}
 	break;
 	case 2: {
-		hint = "Watch out for falling platforms.\nIf they disappear, you'll fall into the dangerous spikes!"
+		hint = "These are falling platforms.\nIf they disappear, you'll fall!\nSometimes you can use that to your advantage."
 	}
 	break;
 	case 3: {

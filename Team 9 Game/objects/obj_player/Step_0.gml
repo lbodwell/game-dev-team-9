@@ -12,11 +12,13 @@ key_lvl2_start = keyboard_check_pressed(ord("2"));
 key_lvl2_waves = keyboard_check_pressed(ord("3"));
 key_lvl4 = keyboard_check_pressed(ord("4"));
 key_infinite_energy = keyboard_check_pressed(ord("I"));
+key_infinite_health = keyboard_check_pressed(ord("H"));
 window_set_cursor(cr_cross);
 
 // Developer mode
 if (developer_mode) {
 	player_infinite_energy = true;
+	player_infinite_health = true;
 	grav = 0.075;
 }
 
@@ -195,6 +197,9 @@ if (player_health > 100) {
 if (player_health < 0) {
 	player_health = 0;
 }
+if (player_infinite_health) {
+	player_health = 100;
+}
 if ((y > room_height + 32) || (player_health == 0)) {
 	player_alive = false;
 }
@@ -316,40 +321,44 @@ image_speed *= sprint;
 // Position-based events
 // Move to tutorial level
 if (show_hints) {
-	if (x > 0 && x < 1024) {
-		// move and jump
-		show_hint = 1;
-	} else if (x > 1024 && x < 3648) {
-		// falling platforms
-		show_hint = 2;
-	} else if (x > 3648 && x < 4192) {
-		// sprint
-		show_hint = 3;
-	} else if (x > 4192 && x < 6048) {
-		// shoot
-		show_hint = 4;
-	} else if (x > 6048 && x < 7776) {
-		// super jump
-		show_hint = 5;
-	} else if (x > 7776 && x < 10208) {
-		// repulsor for enemies
-		show_hint = 6;
-	} else if (x > 10208 && x < 11520) {
-		// heal
-		show_hint = 7;
-	} else if (x > 11520 && x < 12448) {
-		// repulsor for objects
-		show_hint = 8;
-	} else if (x > 12448 && x < 14272) {
-		// sprint and super jump
-		show_hint = 9;
-	} else if (x > 14912) {
-		// beat level
-		show_hint = 10;
-		level_complete = true;
-	}	 else {
-		// none
-		show_hint = 0;
+	if (room == room_lvl1) {
+		if ((x > 32 && x < 4192) && y < 832)  {
+			// move and jump
+			show_hint = 1;
+		} else if (y > 1280 && y < 2208) {
+			// falling platforms
+			show_hint = 2;
+		} else if (x > 192 && y > 1728) {
+			// sprint
+			show_hint = 3;
+		} else {
+			// none
+			show_hint = 0;
+		}
+	}
+	if (room == room_lvl2) {
+		if (x > 4192 && x < 6048) {
+			// shoot
+			show_hint = 4;
+		} else if (x > 6048 && x < 7776) {
+			// super jump
+			show_hint = 5;
+		} else if (x > 7776 && x < 10208) {
+			// repulsor for enemies
+			show_hint = 6;
+		} else if (x > 10208 && x < 11520) {
+			// heal
+			show_hint = 7;
+		} else if (x > 11520 && x < 12448) {
+			// repulsor for objects
+			show_hint = 8;
+		} else if (x > 12448 && x < 14272) {
+			// sprint and super jump
+			show_hint = 9;
+		} else {
+			// none
+			show_hint = 0;
+		}
 	}
 } else {
 	show_hint = 0;
@@ -360,36 +369,41 @@ if (show_hints) {
 }*/
 
 // Demo cheats
-if (key_lvl1) {
-	audio_stop_all();
-	instance_destroy();
-	room_goto(room_lvl1);
-}
-if (key_lvl2_start) {
-	audio_stop_all();
-	instance_destroy();
-	global.checkpoint = noone;
-	global.cp_room = room_lvl2;
-	global.cp_x = 64;
-	global.cp_y = 768;
-	room_goto(room_lvl2);
-}
-if (key_lvl2_waves) {
-	audio_stop_all();
-	instance_destroy();
-	global.checkpoint = inst_591C94D3;
-	global.cp_room = room_lvl2;
-	global.cp_x = 22848;
-	global.cp_y = 2816;
-	room_goto(room_lvl2);
-}
-if (key_lvl4) {
-	audio_stop_all();
-	instance_destroy();
-	room_goto(room_lvl4);
-}
-if (key_infinite_energy) {
-	player_infinite_energy = !player_infinite_energy;
+if (cheats) {
+	if (key_lvl1) {
+		audio_stop_all();
+		instance_destroy();
+		room_goto(room_lvl1);
+	}
+	if (key_lvl2_start) {
+		audio_stop_all();
+		instance_destroy();
+		global.checkpoint = noone;
+		global.cp_room = room_lvl2;
+		global.cp_x = 64;
+		global.cp_y = 768;
+		room_goto(room_lvl2);
+	}
+	if (key_lvl2_waves) {
+		audio_stop_all();
+		instance_destroy();
+		global.checkpoint = inst_591C94D3;
+		global.cp_room = room_lvl2;
+		global.cp_x = 22848;
+		global.cp_y = 2816;
+		room_goto(room_lvl2);
+	}
+	if (key_lvl4) {
+		audio_stop_all();
+		instance_destroy();
+		room_goto(room_lvl4);
+	}
+	if (key_infinite_energy) {
+		player_infinite_energy = !player_infinite_energy;
+	}
+	if (key_infinite_health) {
+		player_infinite_health = !player_infinite_health;
+	}
 }
 
 // Audio handling

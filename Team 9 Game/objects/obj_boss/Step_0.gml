@@ -52,7 +52,7 @@ if (enemy_health > 1000) {
 if (enemy_health < 0) {
 	enemy_health = 0;
 }
-if ((y > room_height + 32) || (enemy_health <= 0)) {
+if (/*(y > room_height + 32) ||*/ (enemy_health <= 0)) {
 	enemy_alive = false;
 }
 if (!enemy_alive) {
