@@ -10,5 +10,4 @@ global.player_energy = 0;
 global.music_on = true;
 
 // Load menu
-//room_goto_next();
-room_goto(room_lvl4);
+room_goto_next();
