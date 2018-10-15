@@ -357,10 +357,12 @@ if (show_hints) {
 // Demo cheats
 if (key_lvl1) {
 	audio_stop_all();
+	instance_destroy();
 	room_goto(room_lvl1);
 }
 if (key_lvl2_start) {
 	audio_stop_all();
+	instance_destroy();
 	global.checkpoint = noone;
 	global.cp_room = room_lvl2;
 	global.cp_x = 64;
@@ -369,6 +371,7 @@ if (key_lvl2_start) {
 }
 if (key_lvl2_waves) {
 	audio_stop_all();
+	instance_destroy();
 	global.checkpoint = inst_591C94D3;
 	global.cp_room = room_lvl2;
 	global.cp_x = 22848;
@@ -377,6 +380,7 @@ if (key_lvl2_waves) {
 }
 if (key_lvl4) {
 	audio_stop_all();
+	instance_destroy();
 	room_goto(room_lvl4);
 }
 if (key_infinite_energy) {
