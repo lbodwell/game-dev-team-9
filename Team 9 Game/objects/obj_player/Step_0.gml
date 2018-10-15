@@ -156,7 +156,7 @@ with (obj_gun) {
 
 // Player status
 if (player_health >= 100) {
-	full_health_multiplier = 1.5;
+	full_health_multiplier = 1.25;
 } else {
 	full_health_multiplier = 1;
 }

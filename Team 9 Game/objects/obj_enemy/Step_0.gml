@@ -98,7 +98,11 @@ if (!enemy_alive) {
 	audio_play_sound(audio_enemy_death, 1, 0);
 	instance_destroy();
 	with (obj_player) {
-		player_energy += 5;
+		if (other.death_cause == 0) {
+			player_energy += 5;
+		} else if (other.death_cause == 1) {
+			player_energy += 2.5;
+		}
 	}
 }
 

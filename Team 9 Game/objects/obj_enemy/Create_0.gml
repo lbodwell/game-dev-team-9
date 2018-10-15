@@ -10,3 +10,4 @@ agro_multiplier = 1;
 agro = false;
 enemy_change_direction_delay = 0;
 is_wave_enemy = false;
+death_cause = noone;
