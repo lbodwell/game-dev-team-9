@@ -11,6 +11,7 @@ key_lvl1 = keyboard_check_pressed(ord("1"));
 key_lvl2_start = keyboard_check_pressed(ord("2"));
 key_lvl2_waves = keyboard_check_pressed(ord("3"));
 key_lvl4 = keyboard_check_pressed(ord("4"));
+key_infinite_energy = keyboard_check_pressed(ord("I"));
 window_set_cursor(cr_cross);
 
 // Developer mode
@@ -352,6 +353,8 @@ if (show_hints) {
 	audio_stop_all();
 	room_goto_next();
 }*/
+
+// Demo cheats
 if (key_lvl1) {
 	audio_stop_all();
 	room_goto(room_lvl1);
@@ -376,9 +379,11 @@ if (key_lvl4) {
 	audio_stop_all();
 	room_goto(room_lvl4);
 }
+if (key_infinite_energy) {
+	player_infinite_energy = !player_infinite_energy;
+}
 
 // Audio handling
-
 if (audio_is_playing(audio_music_menu)) {
 	audio_stop_sound(audio_music_menu);
 }

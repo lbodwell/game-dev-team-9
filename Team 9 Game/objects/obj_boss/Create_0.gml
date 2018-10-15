@@ -2,10 +2,11 @@
 hspd = -1;
 vspd = 0;
 grav = 0.3;
-enemy_health = 500;
+enemy_health = 1500;
 enemy_alive = true;
 agro_multiplier = 1;
 agro = false;
-attack_cooldown = 200;
+attack_cooldown = 150;
 anim_reset_timer = 50;
 game_over = false;
+draw_health = 0;

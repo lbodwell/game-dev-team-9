@@ -1,0 +1,1 @@
+draw_health = lerp(draw_health, obj_boss.enemy_health / 15, 0.5);
