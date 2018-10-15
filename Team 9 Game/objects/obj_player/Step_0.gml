@@ -158,6 +158,11 @@ if (player_health >= 100) {
 } else {
 	full_health_multiplier = 1;
 }
+if (room == room_lvl4) {
+	boss_level_multiplier = 3;
+} else {
+	boss_level_multiplier = 1;
+}
 if (!player_infinite_energy) {
 	if ((hspd != 0 || vspd != 0) && sprint == 1 && grav == 0.3) {
 		if (hspd != 0 && vspd != 0) {
@@ -170,7 +175,7 @@ if (!player_infinite_energy) {
 	} else {
 		player_charge_rate = 0;
 	}
-	player_charge_rate *= full_health_multiplier;
+	player_charge_rate *= (full_health_multiplier * boss_level_multiplier);
 } else {
 	player_energy = 100;
 }

@@ -1,3 +1,3 @@
 with (other) {
-	enemy_health -= 2;
+	enemy_health--;
 }

@@ -43,6 +43,7 @@ player_touching_spike = false;
 player_alive = true;
 player_infinite_energy = false;
 full_health_multipler = 1;
+boss_level_multiplier = 1;
 player_facing = 1;
 gun_facing = 1;
 level_complete = true;

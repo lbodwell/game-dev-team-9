@@ -46,8 +46,8 @@ image_yscale = 2;
 
 
 // Enemy status
-if (enemy_health > 1500) {
-	enemy_health = 1500;
+if (enemy_health > 1000) {
+	enemy_health = 1000;
 }
 if (enemy_health < 0) {
 	enemy_health = 0;

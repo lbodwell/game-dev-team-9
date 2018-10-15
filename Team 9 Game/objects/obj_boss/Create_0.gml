@@ -2,7 +2,7 @@
 hspd = -1;
 vspd = 0;
 grav = 0.3;
-enemy_health = 1500;
+enemy_health = 1000;
 enemy_alive = true;
 agro_multiplier = 1;
 agro = false;
